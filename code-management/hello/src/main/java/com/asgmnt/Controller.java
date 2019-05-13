@@ -13,4 +13,10 @@ public class Controller {
         return "Greetings from Spring Boot!";
     }
 
+    @RequestMapping("/welcome")
+    @ResponseBody
+    public String index() {
+        return "Welcome!!!";
+    }
+
 }
