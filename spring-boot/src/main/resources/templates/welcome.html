@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Registration & Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+<main id="parent">
+    <nav id="nav">
+        <ul class="navigation">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="background-parent">
+        <div id="left-background"></div>
+        <div id="right-background"></div>
+    </div>
+  <h1>Welcome, human</h1>
+<a th:href="@{/logout}">Log out</a>
+
+</main>
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+     *,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100vh;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    animation: fadein 3s;
+    -moz-animation: fadein 3s;
+    -webkit-animation: fadein 3s;
+    -o-animation: fadein 3s;
+}
+
+@keyframes fadein {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadein {
+
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein {
+
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadein {
+
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation {
+    list-style: none;
+    margin: 0;
+    background: white 50% green 50%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: center;
+    z-index: -10;
+}
+
+.navigation a {
+    text-decoration: none;
+    display: block;
+    padding: 1em 2em;
+    color: black;
+}
+
+.navigation a:hover {
+    background: #fafafa;
+}
+
+@media all and (max-width: 800px) {
+    .navigation {
+        justify-content: space-around;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .navigation {
+        -webkit-flex-flow: column wrap;
+        flex-flow: column wrap;
+        padding: 0;
+    }
+
+    .navigation a {
+        text-align: center;
+        padding: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .navigation li:last-of-type a {
+        border-bottom: none;
+    }
+}
+
+#parent {
+    height: 100%;
+    margin: 0;
+}
+
+#background-parent {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+#left-background {
+    width: 30vw;
+    height: auto;
+    background: #1aebb6;
+}
+
+#right-background {
+    width: 70vw;
+    height: auto;
+}
+
+#container {
+    z-index: 1;
+    min-height: 82vh;
+    margin: auto;
+    width: 85%;
+    display: flex;
+    -webkit-box-shadow: 0 9px 29px 3px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 9px 29px 3px rgba(0, 0, 0, 0.35);
+    position: relative;
+    top: 3vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-pane {
+    width: 30.5vw;
+    /*height: 80%;*/
+    /*min-height: 82vh;*/
+    background: #1aebb6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-pane {
+    /*height: 80%;*/
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+input[type=text],
+input[type=password],
+ input[type=email]{
+    width: 100%;
+    padding: 12px 10px;
+    margin: 5px 0 2px 0;
+    display: inline-block;
+    border: 1.6px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /*border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;*/
+}
+
+label {
+    margin-top: 7px;
+}
+
+input[type=submit] {
+    width: 30%;
+    /*width: 100%;*/
+    background-color: #1aebb6;
+    color: black;
+    padding: 14px 20px;
+    margin: 15px 0 9px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: medium;
+}
+
+input[type=submit]:hover {
+    background-color: #09c999;
+}
+.register{
+    width: 30%;
+    text-decoration: none;
+    color: black;
+    padding:10px 0 15px 0;
+
+}
+.register:hover{
+    color: #09c999;
+}
+span {
+    font-size: 12px;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 0.8px;
+    color:red;
+    text-align: center;
+}
+.submit{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

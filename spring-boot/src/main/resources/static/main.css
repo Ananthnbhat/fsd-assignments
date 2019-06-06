@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation {
+    list-style: none;
+    margin: 0;
+    background: white 50% green 50%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: flex-end;
+    z-index: -10;
+}
+
+.navigation a {
+    text-decoration: none;
+    display: block;
+    padding: 1em 2em;
+    color: black;
+}
+
+.navigation a:hover {
+    background: #fafafa;
+}

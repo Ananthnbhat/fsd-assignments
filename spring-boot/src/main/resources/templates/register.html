@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Registration & Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+<main id="parent">
+    <nav id="nav">
+        <ul class="navigation">
+            <li><a href="#">Spring boot Project</a></li>
+        </ul>
+    </nav>
+    <div id="background-parent">
+        <div id="left-background"></div>
+        <div id="right-background"></div>
+    </div>
+    <div id="container">
+        <div class="left-pane">
+            <h2>Registration Page</h2>
+        </div>
+        <div class="right-pane">
+            <!-- <nav id="nav">
+                <ul class="navigation">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav> -->
+            <div th:if="${param.success}">
+                <div class="alert alert-info">You've successfully registered!
+                </div>
+            </div>
+            <h3>Register</h3>
+            <!--<form action="#" th:action="@{/register}" th:object="${register}" method="post" class="form">-->
+            <form action="#" th:class="form" th:action="@{/register}" th:object="${user}" method="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="John Doe" th:field="*{name}"/>
+                <span th:each="error : ${#fields.errors('name')}"
+                      th:text="${error}"></span>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="John.Doe@email.com" th:field="*{email}"/>
+                <span th:each="error : ${#fields.errors('email')}"
+                      th:text="${error}"></span>
+                <label for="userName">User Name</label>
+                <input type="text" id="userName" placeholder="John" th:field="*{userName}"/>
+                <span th:each="error : ${#fields.errors('userName')}"
+                      th:text="${error}"></span>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="******" th:field="*{password}"/>
+                <span th:each="error : ${#fields.errors('password')}"
+                      th:text="${error}"></span>
+                <div class="submit">
+                    <input type="submit" value="Register">
+                    <a class="register" href="/login">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+
+</html>
