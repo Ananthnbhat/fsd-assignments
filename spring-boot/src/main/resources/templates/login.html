@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Registration & Login</title>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     <script src="script.js"></script>
@@ -38,12 +38,11 @@
                 </div>
             </div>
             <div th:if="${param.loginFailure}">
-                <div class="alert alert-info">Your userName or password is incorrect!
-                </div>
+                Your userName or password is incorrect!
             </div>
             <h3>Login</h3>
             <form action="#" th:class="form" th:action="@{/login}" th:object="${loginUser}" method="post">
-                <label for="userName">Name</label>
+                <label for="userName">User Name</label>
                 <input type="text" id="userName" placeholder="John" th:field="*{userName}"/>
                 <span th:each="error : ${#fields.errors('userName')}"
                       th:text="${error}"></span>
