@@ -9,11 +9,15 @@ import AddNewVideo from './components/AddNewVideo';
 function App() {
   return (
     <div className="App">
-     <Nav />
-     <Player />
-     <Controls />
-     <Playlist />
-     <AddNewVideo />
+      <Nav />
+      <div class="parent">
+        <div class="player">
+          <Player />
+          <Controls />
+        </div>
+        <Playlist />
+      </div>
+      <AddNewVideo />
     </div>
   );
 }
