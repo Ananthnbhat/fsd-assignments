@@ -2,14 +2,16 @@ import React from "react";
 import './Controls.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function Controls() {
-    return (
-        <div id='controls'>
+export default class Controls extends React.Component {
+
+    render() {
+        return (
+            <div id='controls'>
                 <div className="buttons">
-                    <button type="button" className="btn btn-default btn-xs play">
+                    <button type="button" className="btn btn-default btn-xs play" onClick={this.props.playOrPauseVideo}>
                         <span className="glyphicon glyphicon-play"></span>
                     </button>
-                    <button type="button" className="btn btn-default btn-xs pause">
+                    <button type="button" className="btn btn-default btn-xs pause" >
                         <span className="glyphicon glyphicon-pause"></span>
                     </button>
                     <button type="button" className="btn btn-default btn-xs reset">
@@ -37,5 +39,6 @@ export default function Controls() {
                     <progress id='progress-bar' min='0' max='100' value='30'>0% played</progress>
                 </div>
             </div>
-    );
+        );
+    }
 }

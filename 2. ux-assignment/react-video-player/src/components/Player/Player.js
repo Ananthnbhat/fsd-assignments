@@ -1,10 +1,10 @@
 import React from 'react';
 
-class Player extends React.Component {
+const Player = React.forwardRef((props, ref) => {
 
-  togglePlay = (e) => {
+  function togglePlay(e) {
     if (e.currentTarget.paused) {
-      e.currentTarget.play()
+      e.currentTarget.play();
       // play.setAttribute("disabled", "true");
       // pause.removeAttribute("disabled");
     }
@@ -14,17 +14,16 @@ class Player extends React.Component {
       // pause.setAttribute("disabled", "true");
     }
   }
-  render() {
-    return (
-      <div className="embed-responsive embed-responsive-16by9">
-        <video id="viewer" className="embed-responsive-item" onClick={this.togglePlay.bind(this)}>
-          <source id="videoSource"
-            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-            type="video/mp4" />
-        </video>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="embed-responsive embed-responsive-16by9">
+      <video id="viewer" className="embed-responsive-item" onClick={togglePlay} ref={ref}>
+        <source id="videoSource"
+          src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          type="video/mp4" />
+      </video>
+    </div>
+  );
+})
+
 
 export default Player;
