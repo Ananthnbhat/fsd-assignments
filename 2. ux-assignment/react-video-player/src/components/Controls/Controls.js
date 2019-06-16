@@ -8,10 +8,10 @@ export default class Controls extends React.Component {
         return (
             <div id='controls'>
                 <div className="buttons">
-                    <button type="button" className="btn btn-default btn-xs play" onClick={this.props.playOrPauseVideo}>
+                    <button type="button" className="btn btn-default btn-xs play" onClick={this.props.playVideo}>
                         <span className="glyphicon glyphicon-play"></span>
                     </button>
-                    <button type="button" className="btn btn-default btn-xs pause" >
+                    <button type="button" className="btn btn-default btn-xs pause" onClick={this.props.pauseVideo}>
                         <span className="glyphicon glyphicon-pause"></span>
                     </button>
                     <button type="button" className="btn btn-default btn-xs reset">

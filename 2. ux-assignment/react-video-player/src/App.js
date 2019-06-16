@@ -9,10 +9,13 @@ import AddNewVideo from './components/AddNewVideo/AddNewVideo';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.videoPlayRef = React.createRef();
+    this.videoRef = React.createRef();
   }
-  playOrPause = () => {
-    this.videoPlayRef.current.play();
+  play = () => {
+    this.videoRef.current.play();
+  }
+  pause = () => {
+    this.videoRef.current.pause();
   }
   render() {
     return (
@@ -20,8 +23,11 @@ class App extends React.Component {
         <Nav />
         <div className="parent">
           <div className="player">
-            <Player ref={this.videoPlayRef} />
-            <Controls playOrPauseVideo={this.playOrPause.bind(this)} />
+            <Player ref={this.videoRef} />
+            <Controls
+              playVideo={this.play.bind(this)}
+              pauseVideo={this.pause.bind(this)}
+              />
           </div>
           <Playlist />
         </div>
