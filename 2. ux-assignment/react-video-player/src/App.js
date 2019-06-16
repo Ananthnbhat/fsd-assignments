@@ -10,7 +10,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.videoRef = React.createRef();
-  }
   play = () => {
     this.videoRef.current.play();
   }
@@ -27,7 +26,8 @@ class App extends React.Component {
             <Controls
               playVideo={this.play.bind(this)}
               pauseVideo={this.pause.bind(this)}
-              />
+              disableButton={this.videoRef}
+            />
           </div>
           <Playlist />
         </div>
