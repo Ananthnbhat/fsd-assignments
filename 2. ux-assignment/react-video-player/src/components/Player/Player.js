@@ -19,7 +19,7 @@ class Player extends React.Component {
       <div className="embed-responsive embed-responsive-16by9">
         <video id="viewer" className="embed-responsive-item" onClick={this.togglePlay.bind(this)} ref={this.props.innerRef} onTimeUpdate={this.props.updateProgress}>
           <source id="videoSource"
-            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            src="http://media.w3.org/2010/05/bunny/trailer.mp4"
             type="video/mp4" />
         </video>
       </div>
