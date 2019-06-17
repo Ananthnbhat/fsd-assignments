@@ -15,7 +15,7 @@ export default class Controls extends React.Component {
                         <span className="glyphicon glyphicon-pause"></span>
                     </button>
                     <button type="button" className="btn btn-default btn-xs reset">
-                        <span className="glyphicon glyphicon-repeat"></span>
+                        <span className="glyphicon glyphicon-repeat" onClick={this.props.repeatVideo}></span>
                     </button>
                     <button type="button" className="btn btn-default btn-xs plus">
                         <span className="glyphicon glyphicon-plus"></span>

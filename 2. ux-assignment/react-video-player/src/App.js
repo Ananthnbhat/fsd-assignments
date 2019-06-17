@@ -17,6 +17,10 @@ class App extends React.Component {
   pause = () => {
     this.videoRef.current.pause();
   }
+  repeat = () => {
+    this.videoRef.current.currentTime = 0;
+    this.videoRef.current.play();
+  }
   render() {
     return (
       <div className="App">
@@ -27,6 +31,7 @@ class App extends React.Component {
             <Controls
               playVideo={this.play.bind(this)}
               pauseVideo={this.pause.bind(this)}
+              repeatVideo={this.repeat.bind(this)}
               disableButton={this.videoRef}
             />
           </div>
