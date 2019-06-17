@@ -21,6 +21,20 @@ class App extends React.Component {
     this.videoRef.current.currentTime = 0;
     this.videoRef.current.play();
   }
+  incVol = () => {
+    if (this.videoRef.current.volume < 1) {
+      this.videoRef.current.volume += .1;
+      console.log(this.videoRef.current.volume);
+    }
+  }
+  decVol = () => {
+    if (this.videoRef.current.volume > 0.05) {
+      this.videoRef.current.volume -= .1;
+      console.log(this.videoRef.current.volume);
+    } else {
+      this.videoRef.current.volume = null;
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -32,6 +46,8 @@ class App extends React.Component {
               playVideo={this.play.bind(this)}
               pauseVideo={this.pause.bind(this)}
               repeatVideo={this.repeat.bind(this)}
+              incrementVol={this.incVol.bind(this)}
+              decrementVol={this.decVol.bind(this)}
               disableButton={this.videoRef}
             />
           </div>

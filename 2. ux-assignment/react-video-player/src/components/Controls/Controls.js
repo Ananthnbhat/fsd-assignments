@@ -18,20 +18,20 @@ export default class Controls extends React.Component {
                         <span className="glyphicon glyphicon-repeat" onClick={this.props.repeatVideo}></span>
                     </button>
                     <button type="button" className="btn btn-default btn-xs plus">
-                        <span className="glyphicon glyphicon-plus"></span>
+                        <span className="glyphicon glyphicon-plus" onClick={this.props.incrementVol}></span>
                     </button>
                     <button type="button" className="btn btn-default btn-xs minus">
-                        <span className="glyphicon glyphicon-minus"></span>
+                        <span className="glyphicon glyphicon-minus" onClick={this.props.decrementVol}></span>
                     </button>
                     <button type="button" className="btn btn-default btn-xs mute">
-                        <span className="glyphicon glyphicon-headphones"></span>
+                        <span className="glyphicon glyphicon-headphones" onClick></span>
                     </button>
                     <button type="button" className="btn btn-success btn-xs thumbsUp">
-                        <span className="glyphicon glyphicon-thumbs-up"></span>
+                        <span className="glyphicon glyphicon-thumbs-up" onClick></span>
                     </button>
                     <span id="likesCount">0</span>
                     <button type="button" className="btn btn-danger btn-xs thumbsDown">
-                        <span className="glyphicon glyphicon-thumbs-down"></span>
+                        <span className="glyphicon glyphicon-thumbs-down" onClick></span>
                     </button>
                     <span id="dislikesCount">0</span>
                 </div>
