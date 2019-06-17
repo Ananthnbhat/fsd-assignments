@@ -36,7 +36,7 @@ export default class Controls extends React.Component {
                     <span id="dislikesCount">0</span>
                 </div>
                 <div>
-                    <progress id='progress-bar' min='0' max='100' value='30'>0% played</progress>
+                    <progress id='progress-bar' min='0' max='100' value={this.props.progressVal}>{this.props.progressVal}% played</progress>
                 </div>
             </div>
         );

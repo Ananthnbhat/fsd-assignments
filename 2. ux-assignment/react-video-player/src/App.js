@@ -10,6 +10,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.videoRef = React.createRef();
+    this.state = {
+      progressValue: 0
+    }
   }
   play = () => {
     this.videoRef.current.play();
@@ -45,13 +48,24 @@ class App extends React.Component {
       console.log(this.videoRef.current.muted);
     }
   }
+  updateProgressBar = () => {
+    var percentage = Math.floor((100 / this.videoRef.current.duration) * this.videoRef.current.currentTime);
+    // Update the progress bar's value
+    this.setState({
+      progressValue: percentage
+    });
+    console.log(this.videoRef.current.duration);
+  }
   render() {
     return (
       <div className="App">
         <Nav />
         <div className="parent">
           <div className="player">
-            <Player ref={this.videoRef} />
+            <Player
+              ref={this.videoRef}
+              updateProgress={this.updateProgressBar.bind(this)}
+            />
             <Controls
               playVideo={this.play.bind(this)}
               pauseVideo={this.pause.bind(this)}
@@ -59,6 +73,7 @@ class App extends React.Component {
               incrementVol={this.incVol.bind(this)}
               decrementVol={this.decVol.bind(this)}
               muteVol={this.toggleMute.bind(this)}
+              progressVal={this.state.progressValue}
               disableButton={this.videoRef}
             />
           </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Player = React.forwardRef((props, ref) => {
+class Player extends React.Component {
 
-  function togglePlay(e) {
+  togglePlay(e) {
     if (e.currentTarget.paused) {
       e.currentTarget.play();
       // play.setAttribute("disabled", "true");
@@ -14,16 +14,18 @@ const Player = React.forwardRef((props, ref) => {
       // pause.setAttribute("disabled", "true");
     }
   }
-  return (
-    <div className="embed-responsive embed-responsive-16by9">
-      <video id="viewer" className="embed-responsive-item" onClick={togglePlay} ref={ref}>
-        <source id="videoSource"
-          src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-          type="video/mp4" />
-      </video>
-    </div>
-  );
-})
+  render() {
+    return (
+      <div className="embed-responsive embed-responsive-16by9">
+        <video id="viewer" className="embed-responsive-item" onClick={this.togglePlay.bind(this)} ref={this.props.innerRef} onTimeUpdate={this.props.updateProgress}>
+          <source id="videoSource"
+            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            type="video/mp4" />
+        </video>
+      </div>
+    );
+  }
+}
 
 
-export default Player;
+export default React.forwardRef((props, ref) => <Player innerRef={ref} {...props} />);
