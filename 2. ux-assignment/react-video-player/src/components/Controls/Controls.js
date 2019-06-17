@@ -24,7 +24,7 @@ export default class Controls extends React.Component {
                         <span className="glyphicon glyphicon-minus" onClick={this.props.decrementVol}></span>
                     </button>
                     <button type="button" className="btn btn-default btn-xs mute">
-                        <span className="glyphicon glyphicon-headphones" onClick></span>
+                        <span className="glyphicon glyphicon-headphones" onClick={this.props.muteVol}></span>
                     </button>
                     <button type="button" className="btn btn-success btn-xs thumbsUp">
                         <span className="glyphicon glyphicon-thumbs-up" onClick></span>

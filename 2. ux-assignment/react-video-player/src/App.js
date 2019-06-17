@@ -35,6 +35,16 @@ class App extends React.Component {
       this.videoRef.current.volume = null;
     }
   }
+  toggleMute = () => {
+    if (this.videoRef.current.muted) {
+      this.videoRef.current.muted = false;
+      console.log(this.videoRef.current.muted);
+    }
+    else {
+      this.videoRef.current.muted = true;
+      console.log(this.videoRef.current.muted);
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -48,6 +58,7 @@ class App extends React.Component {
               repeatVideo={this.repeat.bind(this)}
               incrementVol={this.incVol.bind(this)}
               decrementVol={this.decVol.bind(this)}
+              muteVol={this.toggleMute.bind(this)}
               disableButton={this.videoRef}
             />
           </div>
