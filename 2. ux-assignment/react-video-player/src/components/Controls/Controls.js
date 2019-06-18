@@ -3,12 +3,15 @@ import './Controls.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Controls extends React.Component {
+    playVideo = () =>{
+        this.props.playVideo();
+    }
 
     render() {
         return (
             <div id='controls'>
                 <div className="buttons">
-                    <button type="button" className="btn btn-default btn-xs play" onClick={this.props.playVideo} disabled={false}>
+                    <button type="button" className="btn btn-default btn-xs play" onClick={this.playVideo}>
                         <span className="glyphicon glyphicon-play"></span>
                     </button>
                     <button type="button" className="btn btn-default btn-xs pause" onClick={this.props.pauseVideo}>
@@ -27,11 +30,11 @@ export default class Controls extends React.Component {
                         <span className="glyphicon glyphicon-headphones" onClick={this.props.muteVol}></span>
                     </button>
                     <button type="button" className="btn btn-success btn-xs thumbsUp">
-                        <span className="glyphicon glyphicon-thumbs-up" onClick></span>
+                        <span className="glyphicon glyphicon-thumbs-up" onClick={this.props.incLike}></span>
                     </button>
                     <span id="likesCount">0</span>
                     <button type="button" className="btn btn-danger btn-xs thumbsDown">
-                        <span className="glyphicon glyphicon-thumbs-down" onClick></span>
+                        <span className="glyphicon glyphicon-thumbs-down" onClick={this.props.incUnlike}></span>
                     </button>
                     <span id="dislikesCount">0</span>
                 </div>

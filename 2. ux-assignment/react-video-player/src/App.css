@@ -2,6 +2,7 @@
     margin-top: 0;
     padding-top: 7px;
     display: flex;
+    /*flex-direction: column;*/
     background: #7A419B;
     min-height: 100vh;
     /* background: linear-gradient(135deg, #a1fcdf 0%, #fcdeb9 48%, #fcab64 100%); */

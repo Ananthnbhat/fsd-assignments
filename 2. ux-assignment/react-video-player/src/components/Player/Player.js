@@ -15,11 +15,12 @@ class Player extends React.Component {
     }
   }
   render() {
+    console.log(this.props.videoUrl)
     return (
       <div className="embed-responsive embed-responsive-16by9">
         <video id="viewer" className="embed-responsive-item" onClick={this.togglePlay.bind(this)} ref={this.props.innerRef} onTimeUpdate={this.props.updateProgress}>
           <source id="videoSource"
-            src="http://media.w3.org/2010/05/bunny/trailer.mp4"
+            src={this.props.videoUrl || "http://media.w3.org/2010/05/bunny/trailer.mp4"}
             type="video/mp4" />
         </video>
       </div>

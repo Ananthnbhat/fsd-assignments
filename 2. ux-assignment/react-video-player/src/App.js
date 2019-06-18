@@ -5,16 +5,28 @@ import Player from './components/Player/Player';
 import Controls from './components/Controls/Controls';
 import Playlist from './components/Playlist/Playlist';
 import AddNewVideo from './components/AddNewVideo/AddNewVideo';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.videoRef = React.createRef();
     this.state = {
-      progressValue: 0
+      progressValue: 0,
+      jsonFile: [],
+      url: ''
     }
   }
-  play = () => {
+  componentDidMount() {
+    axios.get(`http://localhost:3004/youtube`)
+      .then(response => {
+        const jsonFile = response.data;
+        this.setState({ jsonFile });
+      });
+  }
+  play = (e) => {
+    // console.log(e);
+    this.setState({ url: e })
     this.videoRef.current.play();
   }
   pause = () => {
@@ -27,13 +39,11 @@ class App extends React.Component {
   incVol = () => {
     if (this.videoRef.current.volume < 1) {
       this.videoRef.current.volume += .1;
-      console.log(this.videoRef.current.volume);
     }
   }
   decVol = () => {
     if (this.videoRef.current.volume > 0.05) {
       this.videoRef.current.volume -= .1;
-      console.log(this.videoRef.current.volume);
     } else {
       this.videoRef.current.volume = null;
     }
@@ -41,11 +51,9 @@ class App extends React.Component {
   toggleMute = () => {
     if (this.videoRef.current.muted) {
       this.videoRef.current.muted = false;
-      console.log(this.videoRef.current.muted);
     }
     else {
       this.videoRef.current.muted = true;
-      console.log(this.videoRef.current.muted);
     }
   }
   updateProgressBar = () => {
@@ -54,7 +62,12 @@ class App extends React.Component {
     this.setState({
       progressValue: percentage
     });
-    console.log(this.videoRef.current.duration);
+  }
+  like = () => {
+    console.log("Increment Like")
+  }
+  unlike = () => {
+    console.log("Increment Unike")
   }
   render() {
     return (
@@ -63,6 +76,7 @@ class App extends React.Component {
         <div className="parent">
           <div className="player">
             <Player
+              videoUrl={this.state.url}
               ref={this.videoRef}
               updateProgress={this.updateProgressBar.bind(this)}
             />
@@ -73,11 +87,16 @@ class App extends React.Component {
               incrementVol={this.incVol.bind(this)}
               decrementVol={this.decVol.bind(this)}
               muteVol={this.toggleMute.bind(this)}
+              incLike={this.like.bind(this)}
+              incUnlike={this.unlike.bind(this)}
               progressVal={this.state.progressValue}
               disableButton={this.videoRef}
             />
           </div>
-          <Playlist />
+          <Playlist
+            jsonInfo={this.state.jsonFile}
+            playVideo={this.play.bind(this)}
+          />
         </div>
         <AddNewVideo />
       </div>
