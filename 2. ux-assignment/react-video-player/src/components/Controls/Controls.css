@@ -6,7 +6,7 @@
     padding: 20px;
     opacity: 0;
     transition: all .3s;
-    margin-top:-100px;
+    margin-top:-101px;
 }
 
 #controls:hover {
@@ -71,4 +71,20 @@ progress::-webkit-progress-bar {
     color: red;
     margin-top: 5px;
     margin-left: -5px;
+}
+.glyphicon{
+    color:#efedeb;
+    font-size: x-large;
+
+}
+.glyphicon:focus{
+    outline: none;
+}
+.btn-primary-outline,
+.btn-primary-outline:focus
+ {
+  background-color: transparent;
+  border-color: black;
+  outline: none;
+  border:transparent;
 }
