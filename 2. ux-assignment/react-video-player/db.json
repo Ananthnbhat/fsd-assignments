@@ -1,6 +1,7 @@
 {
   "youtube": [
     {
+      "id": "1",
       "title": "Bunny story",
       "url": "http://media.w3.org/2010/05/bunny/trailer.mp4",
       "status": "added",
@@ -11,6 +12,7 @@
       "exitplayprogress": 30
     },
     {
+      "id": "2",
       "title": "The first Blender Open Movie from 2006",
       "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
       "status": "added",
@@ -21,6 +23,7 @@
       "exitplayprogress": 0
     },
     {
+      "id": "3",
       "title": "HBO GO now works with Chromecast",
       "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
       "status": "added",
@@ -31,6 +34,7 @@
       "exitplayprogress": 80
     },
     {
+      "id": "4",
       "title": "Sintel short film",
       "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
       "status": "edited",
