@@ -7,9 +7,9 @@ export default class AddNewVideo extends React.Component {
             <div>
                 <div>
                     <label>Title</label>
-                    <input type="text"></input>
+                    <input type="text" required />
                     <label>URL</label>
-                    <input type="text" />
+                    <input type="text" required />
                     <button>Add Video</button>
                 </div>
                 <table>
