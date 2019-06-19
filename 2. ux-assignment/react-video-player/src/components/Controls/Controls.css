@@ -2,29 +2,29 @@
     display: flex;
     flex-direction: column;
     border: 1px solid transparent;
-    background-color: black;
+    background-color: transparent;
     padding: 20px;
-    opacity: 0.2;
+    opacity: 0.1;
     transition: all .3s;
+    margin-top:-101px;
 }
 
 #controls:hover {
-    opacity: 0.8;
+    opacity: 0.99;
 }
 
 .buttons {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    border-radius: 5px;
     cursor: pointer;
 }
 
 #progress-bar {
     margin-top: 10px;
     width: 100%;
-    height: 15px;
-    background: #ffefdb;
+    height: 5px;
+    background: red;
     border-radius: 5px;
     cursor: pointer;
     transition: all cubic-bezier(0.55, 0.085, 0.68, 0.53);
@@ -42,17 +42,17 @@ progress {
 }
 
 progress::-webkit-progress-value {
-    background: #ffefdb;
+    background: red;
     border-radius: 4px;
 }
 
 progress::-moz-progress-bar {
-    background: #fcab64;
+    background: lightgrey;
 }
 
 
 progress::-webkit-progress-bar {
-    background: #ff9232;
+    background: lightgrey;
     border-radius: 4px;
 }
 
@@ -70,4 +70,20 @@ progress::-webkit-progress-bar {
     color: red;
     margin-top: 5px;
     margin-left: -5px;
+}
+.glyphicon{
+    color:grey;
+    font-size: x-large;
+
+}
+.glyphicon:focus{
+    outline: none;
+}
+.btn-primary-outline,
+.btn-primary-outline:focus
+ {
+  background-color: transparent;
+  border-color: black;
+  outline: none;
+  border:transparent;
 }
