@@ -4,20 +4,19 @@
     border: 1px solid transparent;
     background-color: transparent;
     padding: 20px;
-    opacity: 0;
+    opacity: 0.1;
     transition: all .3s;
     margin-top:-101px;
 }
 
 #controls:hover {
-    opacity: 0.8;
+    opacity: 0.99;
 }
 
 .buttons {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -73,7 +72,7 @@ progress::-webkit-progress-bar {
     margin-left: -5px;
 }
 .glyphicon{
-    color:#efedeb;
+    color:grey;
     font-size: x-large;
 
 }

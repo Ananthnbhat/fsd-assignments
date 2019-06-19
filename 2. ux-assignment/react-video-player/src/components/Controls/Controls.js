@@ -3,10 +3,12 @@ import './Controls.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Controls extends React.Component {
-    playVideo = () =>{
+    playVideo = () => {
         this.props.playVideo();
     }
-
+    pauseVideo = () => {
+        this.props.pauseVideo();
+    }
     render() {
         return (
             <div id='controls'>
@@ -17,7 +19,7 @@ export default class Controls extends React.Component {
                     <button type="button" className="btn btn-primary-outline btn-xs play" onClick={this.playVideo}>
                         <span className="glyphicon glyphicon-play"></span>
                     </button>
-                    <button type="button" className="btn btn-primary-outline btn-xs pause" onClick={this.props.pauseVideo}>
+                    <button type="button" className="btn btn-primary-outline btn-xs pause" onClick={this.pauseVideo}>
                         <span className="glyphicon glyphicon-pause"></span>
                     </button>
                     <button type="button" className="btn btn-primary-outline btn-xs reset">
