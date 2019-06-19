@@ -29,10 +29,10 @@ export default class Controls extends React.Component {
                     <progress id='progress-bar' min='0' max='100' value={this.props.progressVal}>{this.props.progressVal}% played</progress>
                 </div>
                 <div className="buttons">
-                    <button type="button" className="btn btn-primary-outline btn-xs play" onClick={this.playVideo} disabled={this.state.disable}>
+                    <button type="button" className="btn btn-primary-outline btn-xs play" onClick={this.playVideo} disabled={this.props.disableButton}>
                         <span className="glyphicon glyphicon-play"></span>
                     </button>
-                    <button type="button" className="btn btn-primary-outline btn-xs pause" onClick={this.pauseVideo} disabled={!this.state.disable}>
+                    <button type="button" className="btn btn-primary-outline btn-xs pause" onClick={this.pauseVideo} disabled={!this.props.disableButton}>
                         <span className="glyphicon glyphicon-pause"></span>
                     </button>
                     <button type="button" className="btn btn-primary-outline btn-xs reset">

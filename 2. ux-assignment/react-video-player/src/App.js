@@ -14,7 +14,8 @@ class App extends React.Component {
     this.state = {
       progressValue: 0,
       jsonFile: [],
-      url: ''
+      url: '',
+      disable: false
     }
   }
   componentDidMount() {
@@ -26,18 +27,22 @@ class App extends React.Component {
   }
   play = (e) => {
     this.videoRef.current.play();
+    this.setState({ disable: true })
   }
   videoPlay = (e) => {
     this.setState({ url: e })
     this.videoRef.current.load();
     this.videoRef.current.play();
+    this.setState({ disable: true })
   }
   pause = () => {
     this.videoRef.current.pause();
+    this.setState({ disable: false })
   }
   repeat = () => {
     this.videoRef.current.currentTime = 0;
     this.videoRef.current.play();
+    this.setState({ disable: true })
   }
   incVol = () => {
     if (this.videoRef.current.volume < 1) {
@@ -83,6 +88,7 @@ class App extends React.Component {
               ref={this.videoRef}
               updateProgress={this.updateProgressBar.bind(this)}
               playVideo={this.play.bind(this)}
+              pauseVideo={this.pause.bind(this)}
             />
             <Controls
               playVideo={this.play.bind(this)}
@@ -94,7 +100,7 @@ class App extends React.Component {
               incLike={this.like.bind(this)}
               incUnlike={this.unlike.bind(this)}
               progressVal={this.state.progressValue}
-              disableButton={this.videoRef}
+              disableButton={this.state.disable}
             />
           </div>
           <Playlist
