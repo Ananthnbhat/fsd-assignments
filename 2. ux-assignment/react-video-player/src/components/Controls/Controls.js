@@ -3,11 +3,24 @@ import './Controls.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Controls extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            disable: false
+        }
+    }
     playVideo = () => {
         this.props.playVideo();
+        this.setState({
+            disable: !this.state.disable
+        })
+
     }
     pauseVideo = () => {
         this.props.pauseVideo();
+        this.setState({
+            disable: !this.state.disable
+        })
     }
     render() {
         return (
@@ -16,10 +29,10 @@ export default class Controls extends React.Component {
                     <progress id='progress-bar' min='0' max='100' value={this.props.progressVal}>{this.props.progressVal}% played</progress>
                 </div>
                 <div className="buttons">
-                    <button type="button" className="btn btn-primary-outline btn-xs play" onClick={this.playVideo}>
+                    <button type="button" className="btn btn-primary-outline btn-xs play" onClick={this.playVideo} disabled={this.state.disable}>
                         <span className="glyphicon glyphicon-play"></span>
                     </button>
-                    <button type="button" className="btn btn-primary-outline btn-xs pause" onClick={this.pauseVideo}>
+                    <button type="button" className="btn btn-primary-outline btn-xs pause" onClick={this.pauseVideo} disabled={!this.state.disable}>
                         <span className="glyphicon glyphicon-pause"></span>
                     </button>
                     <button type="button" className="btn btn-primary-outline btn-xs reset">
