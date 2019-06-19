@@ -25,8 +25,11 @@ class App extends React.Component {
       });
   }
   play = (e) => {
-    // console.log(e);
+    this.videoRef.current.play();
+  }
+  videoPlay = (e) => {
     this.setState({ url: e })
+    this.videoRef.current.load();
     this.videoRef.current.play();
   }
   pause = () => {
@@ -79,6 +82,7 @@ class App extends React.Component {
               videoUrl={this.state.url}
               ref={this.videoRef}
               updateProgress={this.updateProgressBar.bind(this)}
+              playVideo={this.play.bind(this)}
             />
             <Controls
               playVideo={this.play.bind(this)}
@@ -95,7 +99,7 @@ class App extends React.Component {
           </div>
           <Playlist
             jsonInfo={this.state.jsonFile}
-            playVideo={this.play.bind(this)}
+            playVideo={this.videoPlay.bind(this)}
           />
         </div>
         <AddNewVideo />

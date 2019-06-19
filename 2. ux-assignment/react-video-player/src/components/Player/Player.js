@@ -15,7 +15,6 @@ class Player extends React.Component {
     }
   }
   render() {
-    console.log(this.props.videoUrl)
     return (
       <div className="embed-responsive embed-responsive-16by9">
         <video id="viewer" className="embed-responsive-item" onClick={this.togglePlay.bind(this)} ref={this.props.innerRef} onTimeUpdate={this.props.updateProgress}>
