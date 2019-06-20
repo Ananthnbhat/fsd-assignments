@@ -8,7 +8,7 @@ import AddNewVideo from './components/AddNewVideo/AddNewVideo';
 import axios from 'axios';
 const URL = `http://localhost:3004/youtube`;
 
-class App extends React.Component {
+class VideoPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.videoRef = React.createRef();
@@ -169,4 +169,4 @@ class App extends React.Component {
   }
 }
 // rimraf node_modules
-export default App;
+export default VideoPlayer;

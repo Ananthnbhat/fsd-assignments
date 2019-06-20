@@ -31,7 +31,7 @@ export default class AddNewVideo extends React.Component {
                     <label>Title</label>
                     <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} required />
                     <label>URL</label>
-                    <input type="text" value={this.state.url} onChange={this.handleUrlChange.bind(this)} required />
+                    <input type="url" value={this.state.url} onChange={this.handleUrlChange.bind(this)} required />
                     <button onClick={this.handleSubmit.bind(this)}>Add Video</button>
                 </div>
                 <table>
@@ -51,7 +51,7 @@ export default class AddNewVideo extends React.Component {
                                 <td>{item.url}</td>
                                 <td><button>Edit</button></td>
                                 <td><button onClick={() => this.deleteVideo(item)}>Delete</button></td>
-                                <td><button onClick={() => this.approve(item)}>Approve</button></td>
+                                <td><button onClick={() => this.approve(item)} disabled={item.approved}>Approve</button></td>
                             </tr>
                         )}
                     </tbody>
