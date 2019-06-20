@@ -18,6 +18,9 @@ export default class AddNewVideo extends React.Component {
     handleSubmit = () => {
         this.props.addNewVideo(this.state.title, this.state.url);
     }
+    approve = function (obj) {
+        this.props.approveVideo(obj);
+    }
     render() {
         return (
             <div>
@@ -45,7 +48,7 @@ export default class AddNewVideo extends React.Component {
                                 <td>{item.url}</td>
                                 <td><button>Edit</button></td>
                                 <td><button>Delete</button></td>
-                                <td><button>Approve</button></td>
+                                <td><button onClick={() => this.approve(item)}>Approve</button></td>
                             </tr>
                         )}
                     </tbody>

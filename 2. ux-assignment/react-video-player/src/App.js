@@ -55,6 +55,16 @@ class App extends React.Component {
     this.setState({ id: obj.id })
     this.postData(URL, obj);
   };
+  approveVideo = async obj => {
+    obj.approved = 1;
+    const { data } = await axios.put(URL + '/' + obj.id, obj);
+    /* the following commented is for PATCH API as reference */
+    // axios.patch(apiEndpoint + '/' + post.id, {title: post.title});
+    const jsonFile = [...this.state.jsonFile];
+    const index = jsonFile.indexOf(obj);
+    jsonFile[index] = obj;
+    this.setState({ jsonFile });
+  }
   play = (e) => {
     this.videoRef.current.play();
     this.setState({ disable: true })
@@ -142,6 +152,7 @@ class App extends React.Component {
         </div>
         <AddNewVideo
           addNewVideo={this.handleAdd.bind(this)}
+          approveVideo={this.approveVideo.bind(this)}
           jsonInfo={this.state.jsonFile}
         />
       </div>
