@@ -15,12 +15,12 @@ class App extends React.Component {
     this.state = {
       progressValue: 0,
       jsonFile: [],
-      oneObj:{},
+      oneObj: {},
       title: '',
       url: '',
       likes: 0,
       unlikes: 0,
-      exitplayprogress:0,
+      exitplayprogress: 0,
       disable: false
     }
   }
@@ -31,24 +31,15 @@ class App extends React.Component {
         this.setState({ jsonFile });
       });
   }
-  getOneObj = (URL) => {
-    axios.get(URL)
-      .then(response => {
-        const oneObj = response.data;
-        this.setState({ oneObj });
-      });
-  }
   postData = async (URL, obj) => {
     const { data: post } = await axios.post(URL, obj);
-    const jsonFile = [post, ...this.state.jsonFile];
-    console.log();
-    console.log();
+    const jsonFile = [...this.state.jsonFile, post];
     this.setState({ jsonFile });
   }
   componentDidMount() {
     this.getData(URL);
   }
-  handleAdd = (title,url) => {
+  handleAdd = (title, url) => {
     const obj = {
       title,
       url,
@@ -109,11 +100,6 @@ class App extends React.Component {
   }
   like = () => {
     console.log("Increment Like")
-    this.getOneObj(URL+"?url="+this.state.url);
-    const obj = this.state.oneObj;
-    console.log(obj)
-    obj.likes+=1;
-    this.postData(URL,obj) ;
   }
   unlike = () => {
     console.log("Increment Unike")
@@ -151,7 +137,10 @@ class App extends React.Component {
             playVideo={this.videoPlay.bind(this)}
           />
         </div>
-        <AddNewVideo />
+        <AddNewVideo
+          addNewVideo={this.handleAdd.bind(this)}
+          jsonInfo={this.state.jsonFile}
+        />
       </div>
     );
   }

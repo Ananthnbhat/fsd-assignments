@@ -16,11 +16,11 @@ class Playlist extends React.Component {
                 <div className="echo" style={echoStyle}></div>
                 <h3 style={echoStyle}>Playlist</h3>
                 <ul>
-                    {this.props.jsonInfo.map((item, index) => <p key={index} className="videos" id="video0" onClick={() => this.playVideo(item.url)}><button onClick={() => this.playVideo(item.url)} type="button" className="btn btn-default btn-xs playListButton">
+                    {this.props.jsonInfo.map((item, index) => item.approved === 1 ? <p key={index} className="videos" id="video0" onClick={() => this.playVideo(item.url)}><button onClick={() => this.playVideo(item.url)} type="button" className="btn btn-default btn-xs playListButton">
                         <span className="glyphicon glyphicon-play"></span>
                     </button>
                         {item.title}
-                    </p>)}
+                    </p> : null)}
                 </ul>
             </div>
         );
