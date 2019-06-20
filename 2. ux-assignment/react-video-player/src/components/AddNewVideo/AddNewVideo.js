@@ -21,6 +21,9 @@ export default class AddNewVideo extends React.Component {
     approve = function (obj) {
         this.props.approveVideo(obj);
     }
+    deleteVideo = (obj) => {
+        this.props.deleteVideo(obj);
+    }
     render() {
         return (
             <div>
@@ -47,7 +50,7 @@ export default class AddNewVideo extends React.Component {
                                 <td>{item.title}</td>
                                 <td>{item.url}</td>
                                 <td><button>Edit</button></td>
-                                <td><button>Delete</button></td>
+                                <td><button onClick={() => this.deleteVideo(item)}>Delete</button></td>
                                 <td><button onClick={() => this.approve(item)}>Approve</button></td>
                             </tr>
                         )}

@@ -25,6 +25,7 @@ class App extends React.Component {
       disable: false
     }
   }
+
   getData = (URL) => {
     axios.get(URL)
       .then(response => {
@@ -37,6 +38,15 @@ class App extends React.Component {
     const jsonFile = [...this.state.jsonFile, post];
     this.setState({ jsonFile });
   }
+  updateData = async (URL, obj) => {
+    await axios.put(URL, obj);
+  }
+  deleteVideo = async obj => {
+    await axios.delete(URL + '/' + obj.id);
+    const jsonFile = this.state.jsonFile.filter(p => p.id !== obj.id);
+    this.setState({ jsonFile });
+};
+
   componentDidMount() {
     this.getData(URL);
   }
@@ -57,9 +67,7 @@ class App extends React.Component {
   };
   approveVideo = async obj => {
     obj.approved = 1;
-    const { data } = await axios.put(URL + '/' + obj.id, obj);
-    /* the following commented is for PATCH API as reference */
-    // axios.patch(apiEndpoint + '/' + post.id, {title: post.title});
+    this.updateData(URL + '/' + obj.id, obj);
     const jsonFile = [...this.state.jsonFile];
     const index = jsonFile.indexOf(obj);
     jsonFile[index] = obj;
@@ -153,6 +161,7 @@ class App extends React.Component {
         <AddNewVideo
           addNewVideo={this.handleAdd.bind(this)}
           approveVideo={this.approveVideo.bind(this)}
+          deleteVideo={this.deleteVideo.bind(this)}
           jsonInfo={this.state.jsonFile}
         />
       </div>
