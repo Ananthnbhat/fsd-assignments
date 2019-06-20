@@ -65,14 +65,8 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
             <version>5.0.5.RELEASE</version>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

@@ -13,31 +13,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    // below snippet is required if we are using in memory authentication
-//    @Autowired
-//    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("user1").password(passwordEncoder().encode("user1Pass")).roles("USER")
-//                .and()
-//                .withUser("user2").password(passwordEncoder().encode("user2Pass")).roles("USER")
-//                .and()
-//                .withUser("admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN");
-//    }
-
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/anonymous*").anonymous()
+                .antMatchers("/register*").permitAll()
                 .antMatchers("/login*").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login.html")
+                .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/welcome.html", true)
+                .defaultSuccessUrl("/welcome", true)
                 .failureUrl("/login?loginFailure")
 //                .failureHandler(authenticationFailureHandler())
                 .and()

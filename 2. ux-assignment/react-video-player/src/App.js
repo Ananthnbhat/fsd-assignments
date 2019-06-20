@@ -6,6 +6,7 @@ import Controls from './components/Controls/Controls';
 import Playlist from './components/Playlist/Playlist';
 import AddNewVideo from './components/AddNewVideo/AddNewVideo';
 import axios from 'axios';
+const URL = `http://localhost:3004/youtube`;
 
 class App extends React.Component {
   constructor(props) {
@@ -14,30 +15,70 @@ class App extends React.Component {
     this.state = {
       progressValue: 0,
       jsonFile: [],
-      url: ''
+      oneObj:{},
+      title: '',
+      url: '',
+      likes: 0,
+      unlikes: 0,
+      exitplayprogress:0,
+      disable: false
     }
   }
-  componentDidMount() {
-    axios.get(`http://localhost:3004/youtube`)
+  getData = (URL) => {
+    axios.get(URL)
       .then(response => {
         const jsonFile = response.data;
         this.setState({ jsonFile });
       });
   }
+  getOneObj = (URL) => {
+    axios.get(URL)
+      .then(response => {
+        const oneObj = response.data;
+        this.setState({ oneObj });
+      });
+  }
+  postData = async (URL, obj) => {
+    const { data: post } = await axios.post(URL, obj);
+    const jsonFile = [post, ...this.state.jsonFile];
+    console.log();
+    console.log();
+    this.setState({ jsonFile });
+  }
+  componentDidMount() {
+    this.getData(URL);
+  }
+  handleAdd = (title,url) => {
+    const obj = {
+      title,
+      url,
+      status: "added",
+      approved: 0,
+      likes: this.state.likes,
+      unlike: this.state.unlikes,
+      currentStatus: "stopped",
+      exitplayprogress: this.state.exitplayprogress
+    };
+    this.postData(URL, obj);
+  };
   play = (e) => {
     this.videoRef.current.play();
+    this.setState({ disable: true })
   }
   videoPlay = (e) => {
     this.setState({ url: e })
     this.videoRef.current.load();
     this.videoRef.current.play();
+    this.setState({ disable: true })
   }
   pause = () => {
     this.videoRef.current.pause();
+    this.setState({ disable: false })
   }
   repeat = () => {
     this.videoRef.current.currentTime = 0;
     this.videoRef.current.play();
+    this.setState({ disable: true })
   }
   incVol = () => {
     if (this.videoRef.current.volume < 1) {
@@ -68,6 +109,11 @@ class App extends React.Component {
   }
   like = () => {
     console.log("Increment Like")
+    this.getOneObj(URL+"?url="+this.state.url);
+    const obj = this.state.oneObj;
+    console.log(obj)
+    obj.likes+=1;
+    this.postData(URL,obj) ;
   }
   unlike = () => {
     console.log("Increment Unike")
@@ -83,6 +129,7 @@ class App extends React.Component {
               ref={this.videoRef}
               updateProgress={this.updateProgressBar.bind(this)}
               playVideo={this.play.bind(this)}
+              pauseVideo={this.pause.bind(this)}
             />
             <Controls
               playVideo={this.play.bind(this)}
@@ -94,7 +141,9 @@ class App extends React.Component {
               incLike={this.like.bind(this)}
               incUnlike={this.unlike.bind(this)}
               progressVal={this.state.progressValue}
-              disableButton={this.videoRef}
+              disableButton={this.state.disable}
+              likes={this.state.likes}
+              unlikes={this.state.unlikes}
             />
           </div>
           <Playlist

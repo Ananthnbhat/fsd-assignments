@@ -4,12 +4,13 @@ class Player extends React.Component {
 
   togglePlay(e) {
     if (e.currentTarget.paused) {
-      e.currentTarget.play();
+      this.props.playVideo();
       // play.setAttribute("disabled", "true");
       // pause.removeAttribute("disabled");
     }
     else {
-      e.currentTarget.pause();
+      // e.currentTarget.pause();
+      this.props.pauseVideo();
       // play.removeAttribute("disabled");
       // pause.setAttribute("disabled", "true");
     }
