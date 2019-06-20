@@ -16,6 +16,7 @@ class App extends React.Component {
       progressValue: 0,
       jsonFile: [],
       oneObj: {},
+      id: 0,
       title: '',
       url: '',
       likes: 0,
@@ -28,7 +29,7 @@ class App extends React.Component {
     axios.get(URL)
       .then(response => {
         const jsonFile = response.data;
-        this.setState({ jsonFile });
+        this.setState({ jsonFile, id: jsonFile.length });
       });
   }
   postData = async (URL, obj) => {
@@ -41,6 +42,7 @@ class App extends React.Component {
   }
   handleAdd = (title, url) => {
     const obj = {
+      id: this.state.id + 1,
       title,
       url,
       status: "added",
@@ -50,6 +52,7 @@ class App extends React.Component {
       currentStatus: "stopped",
       exitplayprogress: this.state.exitplayprogress
     };
+    this.setState({ id: obj.id })
     this.postData(URL, obj);
   };
   play = (e) => {
