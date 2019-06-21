@@ -8,7 +8,7 @@
       "approved": 1,
       "likes": 22,
       "unlike": 4,
-      "currentStatus": "paused",
+      "currentStatus": "stopped",
       "exitplayprogress": 0
     },
     {
@@ -19,7 +19,7 @@
       "approved": 0,
       "likes": 0,
       "unlike": 0,
-      "currentStatus": "paused",
+      "currentStatus": "stopped",
       "exitplayprogress": 0
     },
     {
@@ -30,7 +30,7 @@
       "approved": 1,
       "likes": 10,
       "unlike": 1,
-      "currentStatus": "paused",
+      "currentStatus": "stopped",
       "exitplayprogress": 0
     },
     {
