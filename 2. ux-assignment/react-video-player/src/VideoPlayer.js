@@ -106,17 +106,12 @@ class VideoPlayer extends React.Component {
   }
   play = () => {
     this.videoRef.current.play();
-    const obj = this.state.oneObj;
-    obj.currentStatus = 'playing';
-    this.updateData(URL + '/' + obj.id, obj);
-    const jsonFile = [...this.state.jsonFile];
-    const index = jsonFile.indexOf(obj);
-    jsonFile[index] = obj;
-    this.setState({ jsonFile, disable: true });
-    this.getOneObj(this.state.url);
+    this.setState({ disable: true })
+    this.getOneObj(this.state.url)
   }
   videoPlay = (url) => {
-    this.setState({ url, disable: true });
+    this.setState({ url })
+    this.setState({ disable: true })
     this.videoRef.current.load();
     this.getOneObj(url);
     this.videoRef.current.play();
@@ -218,7 +213,6 @@ class VideoPlayer extends React.Component {
   }
   updateProgressBar = () => {
     var percentage = Math.floor((100 / this.videoRef.current.duration) * this.videoRef.current.currentTime);
-    console.log(this.videoRef.current.currentTime);
     // Update the progress bar's value
     this.setState({
       progressValue: percentage
