@@ -18,7 +18,7 @@ class VideoPlayer extends React.Component {
       oneObj: {},
       id: 0,
       title: '',
-      url: '',
+      url: 'http://media.w3.org/2010/05/bunny/trailer.mp4',
       likes: 0,
       unlikes: 0,
       exitplayprogress: 0,
@@ -32,6 +32,14 @@ class VideoPlayer extends React.Component {
         const jsonFile = response.data;
         this.setState({ jsonFile, id: jsonFile.length });
       });
+    axios.get(`${URL}?url=${this.state.url}`).then(response => {
+      const oneObj = response.data;
+      console.log(oneObj);
+      this.setState({
+        likes: oneObj[0].likes,
+        unlikes: oneObj[0].unlike
+      });
+    });
   }
   postData = async (URL, obj) => {
     const { data: post } = await axios.post(URL, obj);
@@ -45,7 +53,7 @@ class VideoPlayer extends React.Component {
     await axios.delete(URL + '/' + obj.id);
     const jsonFile = this.state.jsonFile.filter(p => p.id !== obj.id);
     this.setState({ jsonFile });
-};
+  };
 
   componentDidMount() {
     this.getData(URL);
@@ -73,51 +81,31 @@ class VideoPlayer extends React.Component {
     jsonFile[index] = obj;
     this.setState({ jsonFile });
   }
-  play = (e) => {
-    this.videoRef.current.play();
-    this.setState({ disable: true })
+  getOneObj = async (url) => {
+    // const obj = await axios.get(URL + '?url=' + url)
+    const obj = await axios.get(`${URL}?url=${url}`);
+    this.setState({
+      url,
+      likes: obj.data[0].likes,
+      unlikes: obj.data[0].unlike
+    });
+    console.log(obj.data[0].likes);
   }
-  videoPlay = (e) => {
-    this.setState({ url: e })
-    this.videoRef.current.load();
+  play = () => {
     this.videoRef.current.play();
     this.setState({ disable: true })
+    this.getOneObj(this.state.url)
+  }
+  videoPlay = (url) => {
+    this.setState({ url })
+    this.setState({ disable: true })
+    this.videoRef.current.load();
+    this.getOneObj(url);
+    this.videoRef.current.play();
   }
   pause = () => {
     this.videoRef.current.pause();
     this.setState({ disable: false })
-  }
-  repeat = () => {
-    this.videoRef.current.currentTime = 0;
-    this.videoRef.current.play();
-    this.setState({ disable: true })
-  }
-  incVol = () => {
-    if (this.videoRef.current.volume < 1) {
-      this.videoRef.current.volume += .1;
-    }
-  }
-  decVol = () => {
-    if (this.videoRef.current.volume > 0.05) {
-      this.videoRef.current.volume -= .1;
-    } else {
-      this.videoRef.current.volume = null;
-    }
-  }
-  toggleMute = () => {
-    if (this.videoRef.current.muted) {
-      this.videoRef.current.muted = false;
-    }
-    else {
-      this.videoRef.current.muted = true;
-    }
-  }
-  updateProgressBar = () => {
-    var percentage = Math.floor((100 / this.videoRef.current.duration) * this.videoRef.current.currentTime);
-    // Update the progress bar's value
-    this.setState({
-      progressValue: percentage
-    });
   }
   like = () => {
     console.log("Increment Like")
@@ -166,6 +154,38 @@ class VideoPlayer extends React.Component {
         />
       </div>
     );
+  }
+  repeat = () => {
+    this.videoRef.current.currentTime = 0;
+    this.videoRef.current.play();
+    this.setState({ disable: true })
+  }
+  incVol = () => {
+    if (this.videoRef.current.volume < 1) {
+      this.videoRef.current.volume += .1;
+    }
+  }
+  decVol = () => {
+    if (this.videoRef.current.volume > 0.05) {
+      this.videoRef.current.volume -= .1;
+    } else {
+      this.videoRef.current.volume = null;
+    }
+  }
+  toggleMute = () => {
+    if (this.videoRef.current.muted) {
+      this.videoRef.current.muted = false;
+    }
+    else {
+      this.videoRef.current.muted = true;
+    }
+  }
+  updateProgressBar = () => {
+    var percentage = Math.floor((100 / this.videoRef.current.duration) * this.videoRef.current.currentTime);
+    // Update the progress bar's value
+    this.setState({
+      progressValue: percentage
+    });
   }
 }
 // rimraf node_modules
