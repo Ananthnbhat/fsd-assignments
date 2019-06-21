@@ -110,8 +110,7 @@ class VideoPlayer extends React.Component {
     this.getOneObj(this.state.url)
   }
   videoPlay = (url) => {
-    this.setState({ url })
-    this.setState({ disable: true })
+    this.setState({ url, disable: true })
     this.videoRef.current.load();
     this.getOneObj(url);
     this.videoRef.current.play();
