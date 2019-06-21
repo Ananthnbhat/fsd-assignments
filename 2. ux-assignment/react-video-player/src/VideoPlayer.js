@@ -75,8 +75,8 @@ class VideoPlayer extends React.Component {
       url,
       status: "added",
       approved: 0,
-      likes: this.state.likes,
-      unlike: this.state.unlikes,
+      likes: 0,
+      unlike: 0,
       currentStatus: "stopped",
       exitplayprogress: this.state.exitplayprogress
     };
@@ -106,11 +106,17 @@ class VideoPlayer extends React.Component {
   }
   play = () => {
     this.videoRef.current.play();
-    this.setState({ disable: true })
-    this.getOneObj(this.state.url)
+    const obj = this.state.oneObj;
+    obj.currentStatus = 'playing';
+    this.updateData(URL + '/' + obj.id, obj);
+    const jsonFile = [...this.state.jsonFile];
+    const index = jsonFile.indexOf(obj);
+    jsonFile[index] = obj;
+    this.setState({ jsonFile, disable: true });
+    this.getOneObj(this.state.url);
   }
   videoPlay = (url) => {
-    this.setState({ url, disable: true })
+    this.setState({ url, disable: true });
     this.videoRef.current.load();
     this.getOneObj(url);
     this.videoRef.current.play();
