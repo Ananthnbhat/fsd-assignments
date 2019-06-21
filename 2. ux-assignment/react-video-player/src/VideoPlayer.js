@@ -59,6 +59,15 @@ class VideoPlayer extends React.Component {
   componentDidMount() {
     this.getData(URL);
   }
+  componentWillUnmount() {
+    const obj = this.state.oneObj;
+    obj.exitplayprogress = this.videoRef.current.currentTime;
+    this.updateData(URL + '/' + obj.id, obj);
+    const jsonFile = [...this.state.jsonFile];
+    const index = jsonFile.indexOf(obj);
+    jsonFile[index] = obj;
+    this.setState({ jsonFile });
+  }
   handleAdd = (title, url) => {
     const obj = {
       id: this.state.id + 1,
@@ -101,15 +110,20 @@ class VideoPlayer extends React.Component {
     this.getOneObj(this.state.url)
   }
   videoPlay = (url) => {
-    this.setState({ url })
-    this.setState({ disable: true })
+    this.setState({ url, disable: true })
     this.videoRef.current.load();
     this.getOneObj(url);
     this.videoRef.current.play();
   }
   pause = () => {
     this.videoRef.current.pause();
-    this.setState({ disable: false })
+    const obj = this.state.oneObj;
+    obj.currentStatus = 'paused';
+    this.updateData(URL + '/' + obj.id, obj);
+    const jsonFile = [...this.state.jsonFile];
+    const index = jsonFile.indexOf(obj);
+    jsonFile[index] = obj;
+    this.setState({ jsonFile, disable: false })
   }
   like = () => {
     const obj = this.state.oneObj;
@@ -198,6 +212,7 @@ class VideoPlayer extends React.Component {
   }
   updateProgressBar = () => {
     var percentage = Math.floor((100 / this.videoRef.current.duration) * this.videoRef.current.currentTime);
+    console.log(this.videoRef.current.currentTime);
     // Update the progress bar's value
     this.setState({
       progressValue: percentage
