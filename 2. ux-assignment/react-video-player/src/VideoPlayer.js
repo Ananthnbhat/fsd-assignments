@@ -34,8 +34,9 @@ class VideoPlayer extends React.Component {
       });
     axios.get(`${URL}?url=${this.state.url}`).then(response => {
       const oneObj = response.data;
-      console.log(oneObj);
+
       this.setState({
+        oneObj: oneObj[0],
         likes: oneObj[0].likes,
         unlikes: oneObj[0].unlike
       });
@@ -83,13 +84,16 @@ class VideoPlayer extends React.Component {
   }
   getOneObj = async (url) => {
     // const obj = await axios.get(URL + '?url=' + url)
-    const obj = await axios.get(`${URL}?url=${url}`);
-    this.setState({
-      url,
-      likes: obj.data[0].likes,
-      unlikes: obj.data[0].unlike
+    await axios.get(`${URL}?url=${url}`).then(response => {
+      const oneObj = response.data;
+      this.setState({
+        oneObj: oneObj[0],
+        url,
+        likes: oneObj[0].likes,
+        unlikes: oneObj[0].unlike
+      });
+      console.log(oneObj[0]);
     });
-    console.log(obj.data[0].likes);
   }
   play = () => {
     this.videoRef.current.play();
@@ -108,10 +112,22 @@ class VideoPlayer extends React.Component {
     this.setState({ disable: false })
   }
   like = () => {
-    console.log("Increment Like")
+    const obj = this.state.oneObj;
+    obj.likes += 1;
+    this.updateData(URL + '/' + obj.id, obj);
+    const jsonFile = [...this.state.jsonFile];
+    const index = jsonFile.indexOf(obj);
+    jsonFile[index] = obj;
+    this.setState({ jsonFile });
   }
   unlike = () => {
-    console.log("Increment Unike")
+    const obj = this.state.oneObj;
+    obj.unlike += 1;
+    this.updateData(URL + '/' + obj.id, obj);
+    const jsonFile = [...this.state.jsonFile];
+    const index = jsonFile.indexOf(obj);
+    jsonFile[index] = obj;
+    this.setState({ jsonFile });
   }
   render() {
     return (
@@ -137,8 +153,8 @@ class VideoPlayer extends React.Component {
               incUnlike={this.unlike.bind(this)}
               progressVal={this.state.progressValue}
               disableButton={this.state.disable}
-              likes={this.state.likes}
-              unlikes={this.state.unlikes}
+              likes={this.state.oneObj.likes}
+              unlikes={this.state.oneObj.unlike}
             />
           </div>
           <Playlist
