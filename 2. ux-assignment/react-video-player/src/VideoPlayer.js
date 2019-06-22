@@ -92,6 +92,14 @@ class VideoPlayer extends React.Component {
     jsonFile[index] = obj;
     this.setState({ jsonFile });
   }
+  edit = async (obj) => {
+    obj.approved = 0;
+    this.updateData(URL + '/' + obj.id, obj);
+    const jsonFile = [...this.state.jsonFile];
+    const index = jsonFile.indexOf(obj);
+    jsonFile[index] = obj;
+    this.setState({ jsonFile });
+  }
   getOneObj = async (url) => {
     // const obj = await axios.get(URL + '?url=' + url)
     await axios.get(`${URL}?url=${url}`).then(response => {
@@ -183,6 +191,7 @@ class VideoPlayer extends React.Component {
         </div>
         <AddNewVideo
           addNewVideo={this.handleAdd.bind(this)}
+          edit={this.edit.bind(this)}
           approveVideo={this.approveVideo.bind(this)}
           deleteVideo={this.deleteVideo.bind(this)}
           jsonInfo={this.state.jsonFile}
