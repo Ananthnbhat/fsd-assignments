@@ -24,6 +24,7 @@ class VideoPlayer extends React.Component {
       exitplayprogress: 0,
       disable: false
     }
+    this.player = React.createRef();
   }
 
   getData = (URL) => {
@@ -143,12 +144,15 @@ class VideoPlayer extends React.Component {
     jsonFile[index] = obj;
     this.setState({ jsonFile });
   }
+  fullScreen = () => {
+    this.player.current.requestFullscreen();
+  }
   render() {
     return (
       <div className="App">
         <Nav />
         <div className="parent">
-          <div className="player">
+          <div ref={this.player} className="player">
             <Player
               videoUrl={this.state.url}
               ref={this.videoRef}
@@ -169,6 +173,7 @@ class VideoPlayer extends React.Component {
               disableButton={this.state.disable}
               likes={this.state.oneObj.likes}
               unlikes={this.state.oneObj.unlike}
+              fullScreen={this.fullScreen.bind(this)}
             />
           </div>
           <Playlist

@@ -55,7 +55,7 @@ export default class Controls extends React.Component {
                         <span className="glyphicon glyphicon-thumbs-down" onClick={this.props.incUnlike}></span>
                     </button>
                     <span id="dislikesCount">{this.props.unlikes}</span>
-                    <button type="button" className="btn btn-primary-outline btn-xs">
+                    <button type="button" className="btn btn-primary-outline btn-xs" onClick={this.props.fullScreen}>
                         <span className="glyphicon glyphicon-fullscreen"></span>
                     </button>
                 </div>
