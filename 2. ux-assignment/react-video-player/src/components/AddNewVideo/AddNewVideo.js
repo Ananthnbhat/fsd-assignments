@@ -1,12 +1,13 @@
 import React from "react";
-import './AddNewVideo.css'
+import './AddNewVideo.css';
 
 export default class AddNewVideo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             title: '',
-            url: ''
+            url: '',
+            edit: false
         }
     }
     handleTitleChange = (event) => {
@@ -26,6 +27,7 @@ export default class AddNewVideo extends React.Component {
     }
     edit = (obj) => {
         this.props.edit(obj)
+        this.setState({ edit: true });
     }
     render() {
         return (
@@ -49,9 +51,9 @@ export default class AddNewVideo extends React.Component {
                     <tbody>
                         {this.props.jsonInfo.map((item, index) =>
                             <tr key={index}>
-                                <td>{item.id}</td>
-                                <td>{item.title}</td>
-                                <td>{item.url}</td>
+                                <td>{item.id}asfsf</td>
+                                <td>{this.state.edit ? <input type="title" /> : item.title}afasf</td>
+                                <td>{this.state.edit ? <input type="url" /> : item.url}asfsfasf</td>
                                 <td><button onClick={() => this.edit(item)}>Edit</button></td>
                                 <td><button onClick={() => this.deleteVideo(item)}>Delete</button></td>
                                 <td><button onClick={() => this.approve(item)} disabled={item.approved}>Approve</button></td>
