@@ -64,10 +64,7 @@ class VideoPlayer extends React.Component {
     const obj = this.state.oneObj;
     obj.exitplayprogress = this.videoRef.current.currentTime;
     this.updateData(URL + '/' + obj.id, obj);
-    const jsonFile = [...this.state.jsonFile];
-    const index = jsonFile.indexOf(obj);
-    jsonFile[index] = obj;
-    this.setState({ jsonFile });
+    this.getData(URL);
   }
   handleAdd = (title, url) => {
     const obj = {
@@ -87,18 +84,12 @@ class VideoPlayer extends React.Component {
   approveVideo = async obj => {
     obj.approved = 1;
     this.updateData(URL + '/' + obj.id, obj);
-    const jsonFile = [...this.state.jsonFile];
-    const index = jsonFile.indexOf(obj);
-    jsonFile[index] = obj;
-    this.setState({ jsonFile });
+    this.getData(URL);
   }
   edit = async (obj) => {
     obj.approved = 0;
     this.updateData(URL + '/' + obj.id, obj);
-    const jsonFile = [...this.state.jsonFile];
-    const index = jsonFile.indexOf(obj);
-    jsonFile[index] = obj;
-    this.setState({ jsonFile });
+    this.getData(URL);
   }
   getOneObj = async (url) => {
     // const obj = await axios.get(URL + '?url=' + url)
@@ -129,28 +120,20 @@ class VideoPlayer extends React.Component {
     const obj = this.state.oneObj;
     obj.currentStatus = 'paused';
     this.updateData(URL + '/' + obj.id, obj);
-    const jsonFile = [...this.state.jsonFile];
-    const index = jsonFile.indexOf(obj);
-    jsonFile[index] = obj;
-    this.setState({ jsonFile, disable: false })
+    this.getData(URL);
+    this.setState({ disable: false })
   }
   like = () => {
     const obj = this.state.oneObj;
     obj.likes += 1;
     this.updateData(URL + '/' + obj.id, obj);
-    const jsonFile = [...this.state.jsonFile];
-    const index = jsonFile.indexOf(obj);
-    jsonFile[index] = obj;
-    this.setState({ jsonFile });
+    this.getData(URL);
   }
   unlike = () => {
     const obj = this.state.oneObj;
     obj.unlike += 1;
     this.updateData(URL + '/' + obj.id, obj);
-    const jsonFile = [...this.state.jsonFile];
-    const index = jsonFile.indexOf(obj);
-    jsonFile[index] = obj;
-    this.setState({ jsonFile });
+    this.getData(URL);
   }
   fullScreen = () => {
     this.player.current.requestFullscreen();
