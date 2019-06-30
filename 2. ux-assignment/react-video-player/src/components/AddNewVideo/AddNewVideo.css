@@ -70,8 +70,7 @@ td:first-child {
 
 .addNewVideo-form input {
     margin: 1em;
-    border: grey solid;
-    opacity: .5;
+    border: lightgray solid;
     border-radius: 4px;
     width: 20%;
     height: 20%;

@@ -20,6 +20,10 @@ export default class AddNewVideo extends React.Component {
     }
     handleSubmit = () => {
         this.props.addNewVideo(this.state.title, this.state.url);
+        this.setState({
+            title: '',
+            url: ''
+        })
     }
     approve = function (obj) {
         this.props.approveVideo(obj);
@@ -35,10 +39,13 @@ export default class AddNewVideo extends React.Component {
         this.props.edit(editedObj);
         this.setState({ edit: false });
     }
+    cancelEdit = () => {
+        this.setState({ edit: false });
+    }
     render() {
         return (
             <div>
-                {this.state.edit ? <Form editedObj={this.state.obj} newObj={this.editedNewObj.bind(this)} /> :
+                {this.state.edit ? <Form editedObj={this.state.obj} newObj={this.editedNewObj.bind(this)} cancel={this.cancelEdit.bind(this)} /> :
                     <div>
                         <div className="addNewVideo-form">
                             <label>Title</label>
