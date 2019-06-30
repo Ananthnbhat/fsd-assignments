@@ -40,12 +40,12 @@ export default class AddNewVideo extends React.Component {
             <div>
                 {this.state.edit ? <Form editedObj={this.state.obj} newObj={this.editedNewObj.bind(this)} /> :
                     <div>
-                        <div>
+                        <div className="addNewVideo-form">
                             <label>Title</label>
                             <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} required />
                             <label>URL</label>
                             <input type="url" value={this.state.url} onChange={this.handleUrlChange.bind(this)} required />
-                            <button onClick={this.handleSubmit.bind(this)}>Add Video</button>
+                            <button className="btn btn-info" onClick={this.handleSubmit.bind(this)}>Add Video</button>
                         </div>
                         <table>
                             <thead>
@@ -62,9 +62,9 @@ export default class AddNewVideo extends React.Component {
                                         <td>{item.id}</td>
                                         <td>{item.title}</td>
                                         <td>{item.url}</td>
-                                        <td><button onClick={() => this.edit(item)}>Edit</button></td>
-                                        <td><button onClick={() => this.deleteVideo(item)}>Delete</button></td>
-                                        <td><button onClick={() => this.approve(item)} disabled={item.approved}>Approve</button></td>
+                                        <td><button className="btn btn-default" onClick={() => this.edit(item)}>Edit</button></td>
+                                        <td><button className="btn btn-default btn-danger" onClick={() => this.deleteVideo(item)}>Delete</button></td>
+                                        <td><button className="btn btn-default btn-success" onClick={() => this.approve(item)} disabled={item.approved}>Approve</button></td>
                                     </tr>
                                 )}
                             </tbody>
