@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Nav from './components/Nav';
+// import Nav from './components/Nav';
 import Player from './components/Player/Player';
 import Controls from './components/Controls/Controls';
 import Playlist from './components/Playlist/Playlist';
@@ -141,7 +141,6 @@ class VideoPlayer extends React.Component {
   render() {
     return (
       <div className="App">
-        <Nav />
         <div className="parent">
           <div ref={this.player} className="player">
             <Player
@@ -179,6 +178,7 @@ class VideoPlayer extends React.Component {
           deleteVideo={this.deleteVideo.bind(this)}
           jsonInfo={this.state.jsonFile}
         />
+        <p className="love">Made with ❤ by <a href="https://github.com/Ananthnbhat/fsd-assignments/tree/master/2.%20ux-assignment/react-video-player">Ananth</a></p>
       </div>
     );
   }

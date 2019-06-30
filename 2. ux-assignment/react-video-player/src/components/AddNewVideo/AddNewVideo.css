@@ -27,7 +27,9 @@ td:first-child {
     font-weight: bold;
     color: black;
 }
-
+h3{
+  text-align: center; 
+}
 @media screen and (max-width: 768px) {
     .check {
         color: limegreen;

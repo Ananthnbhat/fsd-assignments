@@ -47,6 +47,7 @@ export default class AddNewVideo extends React.Component {
             <div>
                 {this.state.edit ? <Form editedObj={this.state.obj} newObj={this.editedNewObj.bind(this)} cancel={this.cancelEdit.bind(this)} /> :
                     <div>
+                        <h3>Add a new video</h3>
                         <div className="addNewVideo-form">
                             <label>Title</label>
                             <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} required />

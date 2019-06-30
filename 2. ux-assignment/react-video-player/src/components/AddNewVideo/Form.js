@@ -27,6 +27,7 @@ class Form extends React.Component {
     render() {
         return (
             <div className="addNewVideo-form">
+                <h3>Edit the video details</h3>
                 <form>
                     <label>Title</label>
                     <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} required />
