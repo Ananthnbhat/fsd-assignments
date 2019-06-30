@@ -47,10 +47,10 @@ export default class AddNewVideo extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="addNewVideo">
                 {this.state.edit ? <Form editedObj={this.state.obj} newObj={this.editedNewObj.bind(this)} cancel={this.cancelEdit.bind(this)} /> :
                     <div>
-                        <h3>Add a new video</h3>
+                        <header className="addNewVideo-header">Add a new Video</header>
                         <div className="addNewVideo-form">
                             <label>Title</label>
                             <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} required />
@@ -82,6 +82,7 @@ export default class AddNewVideo extends React.Component {
                         </table>
                     </div>
                 }
+                <p className="love">Made with ❤ by <a target="_blank" rel="noopener noreferrer" href="https://github.com/Ananthnbhat/fsd-assignments/tree/master/2.%20ux-assignment/react-video-player">Ananth</a></p>
             </div>
         );
     }

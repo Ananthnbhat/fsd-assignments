@@ -178,7 +178,7 @@ class VideoPlayer extends React.Component {
           deleteVideo={this.deleteVideo.bind(this)}
           jsonInfo={this.state.jsonFile}
         />
-        <p className="love">Made with ❤ by <a target="_blank" rel="noopener noreferrer" href="https://github.com/Ananthnbhat/fsd-assignments/tree/master/2.%20ux-assignment/react-video-player">Ananth</a></p>
+        
       </div>
     );
   }
