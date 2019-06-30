@@ -2,7 +2,7 @@
     padding-top: 7px;
     display: flex;
     /*flex-direction: column;*/
-    background: #292929;
+    background: url('papyrus-dark.png');
     min-height: 100vh;
     background-size: cover;
     align-items: center;

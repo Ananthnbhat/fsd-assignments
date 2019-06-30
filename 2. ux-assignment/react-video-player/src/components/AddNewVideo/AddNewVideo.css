@@ -57,7 +57,7 @@ td:first-child {
     }
 }
 .addNewVideo{
-  background-color: #eae7dc;
+  background:url('../../papyrus.png');
 }
 .addNewVideo-header{
   font-size: 24px;
