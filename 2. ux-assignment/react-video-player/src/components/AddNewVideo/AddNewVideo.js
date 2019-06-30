@@ -13,13 +13,16 @@ export default class AddNewVideo extends React.Component {
         }
     }
     handleTitleChange = (event) => {
-        this.setState({ title: event.target.value });
+        if (event.target.value !== "")
+            this.setState({ title: event.target.value });
     }
     handleUrlChange = (event) => {
-        this.setState({ url: event.target.value });
+        if (event.target.value !== "")
+            this.setState({ url: event.target.value });
     }
     handleSubmit = () => {
-        this.props.addNewVideo(this.state.title, this.state.url);
+        if (this.state.title !== "" && this.state.url !== "")
+            this.props.addNewVideo(this.state.title, this.state.url);
         this.setState({
             title: '',
             url: ''
