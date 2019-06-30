@@ -22,7 +22,8 @@ class VideoPlayer extends React.Component {
       likes: 0,
       unlikes: 0,
       exitplayprogress: 0,
-      disable: false
+      disable: false,
+      fullScreen: false
     }
     this.player = React.createRef();
   }
@@ -136,7 +137,30 @@ class VideoPlayer extends React.Component {
     this.getData(URL);
   }
   fullScreen = () => {
-    this.player.current.requestFullscreen();
+    if (!this.state.fullScreen) {
+      console.log("full");
+      this.player.current.requestFullscreen();
+      if (this.player.current.requestFullscreen) {
+        this.player.current.requestFullscreen();
+      } else if (this.player.current.mozRequestFullScreen) {
+        this.player.current.mozRequestFullScreen();
+      } else if (this.player.current.webkitRequestFullscreen) {
+        this.player.current.webkitRequestFullscreen();
+      } else if (this.player.current.msRequestFullscreen) {
+        this.player.current.msRequestFullscreen();
+      }
+      this.setState({ fullScreen: true });
+    }
+    else {
+      console.log("exit");
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
   }
   render() {
     return (
@@ -178,7 +202,7 @@ class VideoPlayer extends React.Component {
           deleteVideo={this.deleteVideo.bind(this)}
           jsonInfo={this.state.jsonFile}
         />
-        
+
       </div>
     );
   }
