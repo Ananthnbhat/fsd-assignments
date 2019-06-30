@@ -21,15 +21,21 @@ class Form extends React.Component {
         obj.url = this.state.url;
         this.props.newObj(obj);
     }
+    cancelEdit = () => {
+        this.props.cancel()
+    }
     render() {
         return (
-            <form>
-                <label>Title</label>
-                <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} required />
-                <label>URL</label>
-                <input type="url" value={this.state.url} onChange={this.handleUrlChange.bind(this)} required />
-                <button onClick={this.handleSubmit.bind(this)}>Submit</button>
-            </form>
+            <div className="addNewVideo-form">
+                <form>
+                    <label>Title</label>
+                    <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} required />
+                    <label>URL</label>
+                    <input type="url" value={this.state.url} onChange={this.handleUrlChange.bind(this)} required />
+                    <button className="btn btn-info" onClick={this.handleSubmit.bind(this)}>Submit</button>
+                    <button className="btn btn-default" onClick={this.cancelEdit.bind(this)}>Cancel</button>
+                </form>
+            </div>
         );
     }
 }
