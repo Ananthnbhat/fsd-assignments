@@ -27,13 +27,15 @@ class VideoPlayer extends React.Component {
     }
     this.player = React.createRef();
   }
-
-  getData = (URL) => {
+  update = () => {
     axios.get(URL)
       .then(response => {
         const jsonFile = response.data;
         this.setState({ jsonFile, id: jsonFile.length });
       });
+  }
+  getData = (URL) => {
+    this.update();
     axios.get(`${URL}?url=${this.state.url}`).then(response => {
       const oneObj = response.data;
 
@@ -128,13 +130,13 @@ class VideoPlayer extends React.Component {
     const obj = this.state.oneObj;
     obj.likes += 1;
     this.updateData(URL + '/' + obj.id, obj);
-    this.getData(URL);
+    this.update();
   }
   unlike = () => {
     const obj = this.state.oneObj;
     obj.unlike += 1;
     this.updateData(URL + '/' + obj.id, obj);
-    this.getData(URL);
+    this.update();
   }
   fullScreen = () => {
     if (!this.state.fullScreen) {

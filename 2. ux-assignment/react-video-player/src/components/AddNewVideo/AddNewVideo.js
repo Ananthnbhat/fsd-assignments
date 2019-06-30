@@ -9,7 +9,8 @@ export default class AddNewVideo extends React.Component {
             obj: {},
             title: '',
             url: '',
-            edit: false
+            edit: false,
+            rand: false
         }
     }
     handleTitleChange = (event) => {
