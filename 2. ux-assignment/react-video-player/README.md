@@ -1,8 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Download or clone the project first.
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Installs all the required dependencies. 
 
 ### `npm start`
 
@@ -12,10 +18,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+### `json-server --watch db.json httpPort=3004`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Starts the [json-server](https://www.npmjs.com/package/json-server) and fetches the data from db.json file from project directory. This server will be used as a Fake server for the react app.
+
+Open [http://localhost:3004](http://localhost:3004) to view it in the browser. Use http calls to interact with server / json file. For more information visit [json-server git repo](https://github.com/typicode/json-server)
+
+## Optional Scripts
 
 ### `npm run build`
 
@@ -42,27 +51,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
