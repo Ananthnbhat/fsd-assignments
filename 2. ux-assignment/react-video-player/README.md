@@ -22,7 +22,7 @@ You will also see any lint errors in the console.
 
 Starts the [json-server](https://www.npmjs.com/package/json-server) and fetches the data from db.json file from project directory. This server will be used as a Fake server for the react app.
 
-Open [http://localhost:3004](http://localhost:3004) to view it in the browser. Use http calls to interact with server / json file. For more information visit [json-server git repo](https://github.com/typicode/json-server)
+Open [http://localhost:3004](http://localhost:3004) to view it in the browser. Use http calls to interact with server / json file. For more information visit [json-server git repo](https://github.com/typicode/json-server).
 
 ## Optional Scripts
 
