@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `json-server --watch db.json httpPort=3004`
+### `json-server --watch db.json --port 3004`
 
 Starts the [json-server](https://www.npmjs.com/package/json-server) and fetches the data from db.json file from project directory. This server will be used as a Fake server for the react app.
 
