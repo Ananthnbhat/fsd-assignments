@@ -1,17 +1,15 @@
 .parent {
-    margin-top: 0;
     padding-top: 7px;
     display: flex;
     /*flex-direction: column;*/
-    background: #7A419B;
+    background: url('papyrus-dark.png');
     min-height: 100vh;
-    /* background: linear-gradient(135deg, #a1fcdf 0%, #fcdeb9 48%, #fcab64 100%); */
-    background: linear-gradient(135deg, #fcdeb9 0%, #fcab64 48%, #388697 90%);
     background-size: cover;
     align-items: center;
     justify-content: center;
     overflow: auto;
 }
+
 
 .player {
     width: 50%;

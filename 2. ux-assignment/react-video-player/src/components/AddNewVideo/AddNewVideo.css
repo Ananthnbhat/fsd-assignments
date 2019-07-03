@@ -1,17 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
 table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 60%;
-  margin:0 auto;
-  text-align: center
+    width: 80%;
+    margin: 3em auto;
+    padding: 1em;
+    border: none !important;
 }
 
-td, th {
-  /*border: 1px solid #dddddd;*/
-  padding: 8px;
-  text-align: center
+td,
+th {
+    text-align: center !important;
+    border: solid 1px #ccc;
+    /* font-size: 22px; */
+    padding: 8px !important;
+    word-wrap: break-word;
 }
-th{
-  text-align: center
 
+td {
+    color: #545454;
+}
+
+th:first-child,
+td:first-child {
+    font-weight: bold;
+    color: black;
+}
+@media screen and (max-width: 768px) {
+    .check {
+        color: limegreen;
+        /* font-size: 20px; */
+    }
+
+    tr {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+    }
+
+    td,
+    th {
+        display: block;
+        width: 33.333333333333%;
+        /* font-size: 20px; */
+    }
+
+    th:first-child,
+    td:first-child {
+        background: #efefef;
+        width: 100%;
+    }
+
+    th:first-child {
+        display: none;
+    }
+}
+.addNewVideo{
+  background:url('../../papyrus.png');
+}
+.addNewVideo-header{
+  font-size: 24px;
+  padding-top:20px;
+  text-align: center;
+}
+.addNewVideo-form {
+    width: 80%;
+    margin: 3em auto;
+    text-align: center;
+}
+
+.addNewVideo-form label {
+    padding-left: 2em;
+}
+
+.addNewVideo-form input {
+    margin: 1em;
+    border: lightgray solid;
+    border-radius: 4px;
+    width: 20%;
+    height: 20%;
+    padding: .3em
+}
+
+.addNewVideo-form button {
+    margin-bottom: .5em;
+}
+.love {
+  text-align: center;
+  margin-bottom: 0 !important;
+  padding-bottom: 1em;
 }
