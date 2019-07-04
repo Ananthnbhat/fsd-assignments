@@ -13,6 +13,7 @@ In the project directory, you can run:
 Installs all the required dependencies for the archetype project from pom.xml. 
 
 `mkdir newProject`
+
 `cd newProject`
 
 Creates a new folder where the new project will be created using the archetype.
@@ -39,7 +40,7 @@ Packages the built project. Other alternative is `mvn install` or `mvn clean ins
 `mvn spring-boot:run`
 
 Executes the jar file created in the previous command.
-Now open (https://localhost:8080/app)[https://localhost:8080/app] in the browser window to see the app in action.
+Now open [https://localhost:8080/app](https://localhost:8080/app) in the browser window to see the app in action.
 
 `mvn clean`
 
@@ -53,10 +54,10 @@ Go to the pom file of the `my-app` project and change the value in the packaging
 
 Compiles the project, creates the war file and deploys in the embedded tomcat server.
 
-Again you can visit (https://localhost:8080/app)[https://localhost:8080/app] in the browser window to see the app in action.
+Again you can visit [https://localhost:8080/app](https://localhost:8080/app) in the browser window to see the app in action.
 
 ### 2. Using Tomcat server
-Download the Tomcat from (here)[https://tomcat.apache.org/download-80.cgi]
+Download the Tomcat from [here](https://tomcat.apache.org/download-80.cgi)
 
 Before accessing the Tomcat manager web interface, set the username and password in $CATALINA_HOME/conf/tomcat-users.xml
 
@@ -72,7 +73,7 @@ You can also change the port where the Tomcat is run, in $CATALINA_HOME/conf/ser
 Open http://localhost:8080 (assuming 8080 is the port) in the browser.
 
 Then use one of the options available in Tomcat web interface to deploy the WAR file and access in http://localhost:xxxx/app
-For more info, (visit Tomcat official website)[https://tomcat.apache.org/tomcat-4.1-doc/RUNNING.txt].
+For more info, [visit Tomcat official website](https://tomcat.apache.org/tomcat-4.1-doc/RUNNING.txt).
 
 ### 3. Using Jetty server
 
@@ -91,7 +92,7 @@ This should be pasted inside plugins tag
    </plugins>
 </build>`
 
-Now you can deploy the app using jetty using following command. And access the app in (http://localhost:8080/app)[http://localhost:8080/app]. (assuming that you have already packaged the app using `mvn pckage`)
+Now you can deploy the app using jetty using following command. And access the app in [http://localhost:8080/app](http://localhost:8080/app). (assuming that you have already packaged the app using `mvn pckage`)
 
 `mvn jetty:run`
 
