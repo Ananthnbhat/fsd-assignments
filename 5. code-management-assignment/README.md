@@ -91,11 +91,62 @@ This should be pasted inside plugins tag
    </plugins>
 </build>`
 
-Now you can deploy the app using jetty using following command. And access the app in (http://localhost:8080/app)[http://localhost:8080/app].
+Now you can deploy the app using jetty using following command. And access the app in (http://localhost:8080/app)[http://localhost:8080/app]. (assuming that you have already packaged the app using `mvn pckage`)
 
 `mvn jetty:run`
 
-       
+# Git assignment
+
+ 1.Create a new maven project with default archetype
+ 
+ Please follow instructions given above to create a new project. I have already created a new project called **hello** which is available in this repo and I have already done the following things for that project.
+ 
+ 2.Compile the project and generate jar/war file for the project using maven at command prompt.
+ `mvn compile`
+ 
+ 3.Initialize the newly created project asa GIT repository
+ `git init`
+ 
+ 4.Commit the repository to the internal GIT server.
+ `git commit -m "first commit"`
+ 
+ 5.Currently all files are committed to remote repository. Configure the local repository such that target folder is not committed from local repository to remote repository
+   a.Create a new .gitignore file if not available
+   b.Add target folder to this file - target/  
+   
+ 6.Delete the “target” folder from the remote repository which was committed in step 4
+ `mvn clean`
+ 
+ 7.Create a new branch “welcomeapi” in the local repository
+ `git branch welcomeapi`
+ 
+   a.Make changes to the source code i.e. add a new url (/welcome) to the rest controller.
+   add the below code to the Controller.java file
+   `@RequestMapping("/welcome")
+    @ResponseBody
+    public String index() {
+        return "Welcome!!!";
+}`
+   
+   b.Now, push the change from local repository to remote repository in the branch “welcomeapi”.
+   c.You must not push these changes to main branch in remote repository.
+   `git commit -m "add a new route in the controller"`
+   `git push origin welcomeapi`
+   
+   d.Locally, merge the changes done welcomeapi branch to main branch. 
+   `git checkout master`
+   `git merger welcomeapi`
+   
+   e.Push the changes from local repository to remote repository.
+   `git commit -m "merged from welcomapi branch"`
+   `git push`
+   
+   f.Oncethe changes are merged and pushedto the remote copy of repository on GIT server, delete the branch welcomeapi.
+   `git branch -d welcomeapi`
+   
+# Junit assignment   
+ 
+
 
 
 
