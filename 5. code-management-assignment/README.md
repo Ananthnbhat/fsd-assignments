@@ -8,40 +8,40 @@ We will use this archetype project to build a new project.
 
 In the project directory, you can run:
 
-### `mvn clean install`
+`mvn clean install`
 
 Installs all the required dependencies for the archetype project from pom.xml. 
 
-### `mkdir newProject`
-### `cd newProject`
+`mkdir newProject`
+`cd newProject`
 
 Creates a new folder where the new project will be created using the archetype.
 Then go into that folder.
 
-### `mvn archetype:generate -DgroupId=com.new.app -DartifactId=my-app -DarchetypeGroupId=asgmnt.mvn -DarchetypeArtifactId=customArchetype -DarchetypeVersion=1.0`
+`mvn archetype:generate -DgroupId=com.new.app -DartifactId=my-app -DarchetypeGroupId=asgmnt.mvn -DarchetypeArtifactId=customArchetype -DarchetypeVersion=1.0`
 
 This command is used to create the new project with groupId=com.new.app and artifactId=my-app. This is your choice. You can give your own values for the artifactId and groupId. But the values for archetypeArtifactId, archetypeGroupId and archetypeVersion should be same as the artifactId, groupId & version of the archetype project - customArchetype (from pom.xml).
 
 Now the new project would have been created with the description "A basic starter template using springboot, jpa data, thymeleaf and MVC" and springboot, jpa, thymeleaf and MVC as dependencies in the new project's pom file as per the requirement.
 
-### `cd my-app`
+`cd my-app`
 
 Go into the new project's directory.
 
-### `mvn compile`
+`mvn compile`
 
 Compiles the project.
 
-### `mvn package`
+`mvn package`
 
 Packages the built project. Other alternative is `mvn install` or `mvn clean install`.
 
-### `mvn spring-boot:run`
+`mvn spring-boot:run`
 
 Executes the jar file created in the previous command.
 Now open (https://localhost:8080/app)[https://localhost:8080/app] in the browser window to see the app in action.
 
-### `mvn clean`
+`mvn clean`
 
 Cleans all the compiled class files and jar files in target folder.
 
@@ -51,7 +51,7 @@ Go to the pom file of the `my-app` project and change the value in the packaging
 
 ### 1. `mvn spring-boot:run`
 
-Compiles the project, creates the war file and deploys in the tomcat server.
+Compiles the project, creates the war file and deploys in the embedded tomcat server.
 
 Again you can visit (https://localhost:8080/app)[https://localhost:8080/app] in the browser window to see the app in action.
 
@@ -76,7 +76,24 @@ For more info, (visit Tomcat official website)[https://tomcat.apache.org/tomcat-
 
 ### 3. Using Jetty server
 
+Paste the below in the pom.xml
 
+`<plugin>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-maven-plugin</artifactId>
+    <version>9.3.11.v20160721</version>
+</plugin>`
+
+This should be pasted inside plugins tag
+`<build>
+   <plugins>
+   ...
+   </plugins>
+</build>`
+
+Now you can deploy the app using jetty using following command. And access the app in (http://localhost:8080/app)[http://localhost:8080/app].
+
+`mvn jetty:run`
 
        
 
