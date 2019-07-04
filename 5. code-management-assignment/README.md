@@ -155,6 +155,19 @@ Now you can deploy the app using jetty using following command. And access the a
    `git branch -d welcomeapi`
    
 # Junit assignment   
+
+For the following use case
+
+`public class Calculation{
+public static int add(inta, intb) {
+	return a + b;
+}
+public static int sub(inta, intb) {
+	return a -b;
+}`
+
+Write a Junit Test case to testthe above classfor the business logic.
+--The test case is available in CalculationTest.java file in this repository
  
 
 
