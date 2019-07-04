@@ -86,6 +86,7 @@ Paste the below in the pom.xml
 </plugin>`
 
 This should be pasted inside plugins tag
+
 `<build>
    <plugins>
    ...
