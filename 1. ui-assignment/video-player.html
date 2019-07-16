@@ -15,6 +15,10 @@
             box-sizing: border-box;
         }
         
+        body {
+            background: #379683;
+        }
+        
         *,
         *:before,
         *:after {
@@ -27,8 +31,7 @@
             display: flex;
             background: #7A419B;
             min-height: 100vh;
-            /* background: linear-gradient(135deg, #a1fcdf 0%, #fcdeb9 48%, #fcab64 100%); */
-            background: linear-gradient(135deg, #fcdeb9 0%, #fcab64 48%, #388697 90%);
+            background: #379683;
             background-size: cover;
             align-items: center;
             justify-content: center;
@@ -40,6 +43,7 @@
             float: left;
             margin-left: 5%;
             background-color: black;
+            border-radius: 10px;
         }
         
         .playlist {
@@ -54,6 +58,7 @@
             padding: 20px;
             opacity: 0.2;
             transition: all .3s;
+            border-radius: 10px;
         }
         
         #controls:hover {
@@ -108,15 +113,31 @@
         
         .videos {
             cursor: pointer;
-            color: brown;
+            color: white;
             text-decoration: none !important;
             padding-top: 1.5em;
+            opacity: .9;
+            font-size: 15px;
         }
         
         .videos:hover {
             text-decoration: none !important;
             cursor: pointer;
-            color: #036176;
+            color: white;
+            opacity: 1;
+        }
+        
+        h3 {
+            color: #EE7600;
+        }
+        
+        .playButton {
+            color: #EE7600;
+        }
+        
+        #viewer {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
         
         #likesCount {
@@ -133,6 +154,12 @@
         
         .playListButton {
             opacity: 0.5;
+        }
+        
+        .header {
+            font-size: 30px;
+            text-align: center;
+            color: white;
         }
         
         @media only screen and (max-width: 968px) {
@@ -153,6 +180,7 @@
 </head>
 
 <body>
+        <header class="header">Custom video player</header>
     <div class="parent">
         <div class="player">
             <div class="embed-responsive embed-responsive-16by9">
@@ -202,23 +230,23 @@
             <h3 style="text-align:center">Playlist</h3>
             <ul>
                 <p class="videos" id="video0"><button type="button" class="btn btn-default btn-xs playListButton">
-                        <span class="glyphicon glyphicon-play"></span>
+                        <span class="glyphicon glyphicon-play playButton"></span>
                     </button> Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself.
                 </p>
                 <p class="videos" id="video1"><button type="button" class="btn btn-default btn-xs playListButton">
-                        <span class="glyphicon glyphicon-play"></span>
+                        <span class="glyphicon glyphicon-play playButton"></span>
                     </button> The first Blender Open Movie from 2006.
                 </p>
                 <p class="videos" id="video2"><button type="button" class="btn btn-default btn-xs playListButton">
-                        <span class="glyphicon glyphicon-play"></span>
+                        <span class="glyphicon glyphicon-play playButton"></span>
                     </button> HBO GO now works with Chromecast -- the easiest way to enjoy online video on your TV.
                 </p>
                 <p class="videos" id="video3"><button type="button" class="btn btn-default btn-xs playListButton">
-                        <span class="glyphicon glyphicon-play"></span>
+                        <span class="glyphicon glyphicon-play playButton"></span>
                     </button> Sintel is an independently produced short film, initiated by the Blender Foundation.
                 </p>
                 <p class="videos" id="video4"><button type="button" class="btn btn-default btn-xs playListButton">
-                        <span class="glyphicon glyphicon-play"></span>
+                        <span class="glyphicon glyphicon-play playButton"></span>
                     </button> Tears of Steel was realized with crowd-funding by users of the open source 3D creation tool
                     Blender.
                 </p>
