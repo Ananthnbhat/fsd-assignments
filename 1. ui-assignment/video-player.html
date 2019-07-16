@@ -16,7 +16,7 @@
         }
         
         body {
-            background: #379683;
+            background: #C0C0C0;
         }
         
         *,
@@ -29,9 +29,7 @@
             margin-top: 0;
             padding-top: 7px;
             display: flex;
-            background: #7A419B;
-            min-height: 100vh;
-            background: #379683;
+            min-height: 90vh;
             background-size: cover;
             align-items: center;
             justify-content: center;
@@ -48,6 +46,9 @@
         
         .playlist {
             width: 50%;
+            background: white;
+            margin: 0 30px;
+            border-radius: 10px;
         }
         
         #controls {
@@ -113,7 +114,7 @@
         
         .videos {
             cursor: pointer;
-            color: white;
+            color: black;
             text-decoration: none !important;
             padding-top: 1.5em;
             opacity: .9;
@@ -123,11 +124,11 @@
         .videos:hover {
             text-decoration: none !important;
             cursor: pointer;
-            color: white;
+            color: black;
             opacity: 1;
         }
         
-        h3 {
+        h2 {
             color: #EE7600;
         }
         
@@ -157,9 +158,11 @@
         }
         
         .header {
-            font-size: 30px;
+            font-size: 50px;
             text-align: center;
             color: white;
+            font-weight: bolder;
+            padding-top: 50px;
         }
         
         @media only screen and (max-width: 968px) {
@@ -180,11 +183,11 @@
 </head>
 
 <body>
-        <header class="header">Custom video player</header>
+    <header class="header">Custom video player</header>
     <div class="parent">
         <div class="player">
             <div class="embed-responsive embed-responsive-16by9">
-                <video id="viewer" class="embed-responsive-item">
+                <video id="viewer" class="embed-responsive-item" poster="poster.jpg">
                     <source id="videoSource" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
                 </video>
             </div>
@@ -227,7 +230,7 @@
         </div>
         <div class="playlist">
             <div class="echo" style="text-align: center"></div>
-            <h3 style="text-align:center">Playlist</h3>
+            <h2 style="text-align:center">Playlist</h2>
             <ul>
                 <p class="videos" id="video0"><button type="button" class="btn btn-default btn-xs playListButton">
                         <span class="glyphicon glyphicon-play playButton"></span>
