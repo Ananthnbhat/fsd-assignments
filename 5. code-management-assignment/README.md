@@ -4,7 +4,7 @@ Download or clone the **customArchetype** project first.
 
 We will use this archetype project to build a new project.
 
-## Creting a new project
+## Creating a new project
 
 In the project directory, you can run:
 
