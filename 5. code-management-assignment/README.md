@@ -169,7 +169,7 @@ public static int sub(inta, intb) {
 }`
 
 Write a Junit Test case to testthe above classfor the business logic.
---The test case is available in CalculationTest.java file in this repository
+--The test case is available in JunitAssignment.java file in this repository
  
 
 
