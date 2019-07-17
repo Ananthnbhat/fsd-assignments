@@ -1,0 +1,146 @@
+Assignment 1.
+
+1)
+
+CREATE SCHEMA IF NOT EXISTS `socialCommPortal` 
+
+CREATE TABLE IF NOT EXISTS `socialCommPortal`.`notification` (
+  `notification_id` NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `Posts` VARCHAR(45) NULL,
+  `taguser_id` INT NULL,
+  PRIMARY KEY (`notification_id`),
+  INDEX `id_idx` (`user_id` ASC) VISIBLE,
+  INDEX `tag_id_idx` (`taguser_id` ASC) VISIBLE,
+  CONSTRAINT `id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `socialCommPortal`.`Registration` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `tag_id`
+    FOREIGN KEY (`taguser_id`)
+    REFERENCES `socialCommPortal`.`Registration` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+
+
+CREATE TABLE IF NOT EXISTS `socialCommPortal`.`Registration` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `First_Name` VARCHAR(45) NOT NULL,
+  `Last_Name` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(45) NOT NULL,
+  `Location_Details` VARCHAR(45) NOT NULL,
+  `Acount_status` CHAR(1) NOT NULL DEFAULT ‘Y’,
+  `External account` VARCHAR(45) NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE INDEX `Id_UNIQUE` (`Id` ASC) VISIBLE)
+;
+
+CREATE TABLE IF NOT EXISTS `socialCommPortal`.`Follow` (
+  `following_id` INT NOT NULL AUTO_INCREMENT,
+  `User_Id` INT NOT NULL,
+  `following_user_id` INT NOT NULL,
+  `notification_id` INT NULL,
+  `comment_id` INT NULL,
+  PRIMARY KEY (`following _id`),
+  INDEX `user_id_idx` (`User_Id` ASC) VISIBLE,
+  INDEX `following_user_id_idx` (`following_user_id` ASC) VISIBLE,
+  INDEX `comment_id_idx` (`notification_id` ASC, `comment_id` ASC) VISIBLE,
+  CONSTRAINT `user_id`
+    FOREIGN KEY (`User_Id`)
+    REFERENCES `socialCommPortal`.`Registration` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `following_user_id`
+    FOREIGN KEY (`following_user_id`)
+    REFERENCES `socialCommPortal`.`Registration` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `notification_id`
+    FOREIGN KEY (`notification_id`)
+    REFERENCES `socialCommPortal`.` notification ` (`notification_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `comment_id`
+    FOREIGN KEY (`comment_id`)
+    REFERENCES `socialCommPortal`.` Comments ` (`Comment_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+
+
+CREATE TABLE IF NOT EXISTS `socialCommPortal`.`Comments` (
+  `Comment_id` NOT NULL AUTO_INCREMENT,
+  `User_Id` INT NOT NULL,
+  `notification_id` INT NOT NULL,
+  `comment` VARCHAR(45) NULL,
+  PRIMARY KEY (`Comment_id`),
+  INDEX `id_idx` (`notification_id` ASC) VISIBLE,
+  INDEX `id_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `socialCommPortal`.`Registration` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `notification_id`
+    FOREIGN KEY (`notification_id`)
+    REFERENCES `socialCommPortal`.`notification` (`notification_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+
+CREATE TABLE IF NOT EXISTS `socialCommPortal`.`Favorite` (
+  `Fav_id` NOT NULL AUTO_INCREMENT,
+  `User_Id` INT NOT NULL,
+  `notification_id` INT NOT NULL,
+   PRIMARY KEY (`Fav_id`),
+  INDEX `id_idx` (`notification_id` ASC) VISIBLE,
+  INDEX `id_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `socialCommPortal`.`Registration` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `notification_id`
+    FOREIGN KEY (`notification_id`)
+    REFERENCES `socialCommPortal`.`notification` (`notification_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+
+
+2)
+	2.1) Table Registration is used for storing all the details of user who are registred to this social web app where we can give the user details with id being Primary key auto incremented
+		table registration Details
+			Id - primary key auto incremented ID	
+			First Name - First Name of the user
+			Last Name - Last Name of the user
+			Password - Password for the registered user
+			Location_details - location details of register user
+			Account_status - status  of Account will be default set ad Y for active can be made N to deactivate
+			External_account - user can link his external account details here
+	2.2) Table notification is used for storing all the post and notification details of the users social web app with notification_id being primary key auto incremented
+			notification_id = primary key auto incremented ID
+			User_id = foreign key for registration table for tagging user who made the post
+			post - posts made by user
+			taguser_id - another user tagged to that user foreign key tagged to user_id from notification table
+	2.3) Table follow is used for storing all the details of user following details 
+			following_id primary key auto incremented ID
+			User_Id - foreign key tagging user who is the user is following other user
+  			following_user_id - foregin key of user who is been followed by that user
+			notification_id - foreign key of user which notification user has followed to recieve foreign key is tagged to notification_id of notification table
+			comment_id - foreign key of comment user which comment he wants to see foreign key is tagged to Comment_id of comments table
+	2.4) Table Comments is used to store all the comments made for posts 	
+			Comment_id - primary key auto incremented ID
+			User_id - foreign key for registration table for tagging user who made the comment
+			notification_id - foreign key mapping notification which for which the comment is made foreign key is tagged to notification_id of notification table
+			comment - comment made by the user
+	2.5) Table Favorite is user to note the fav notification marked by the user 
+			Fav_id - primary key auto incremented ID
+			User_id - foreign key for registration table for tagging user who made the a post fav
+			notification_id - foreign key mapping notification which for which post is marked as favorite foreign key is tagged to notification_id of notification table
+	
+			
+		
+
