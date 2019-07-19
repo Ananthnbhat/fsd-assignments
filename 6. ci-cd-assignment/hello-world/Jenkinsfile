@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven 3.6.0'
+    }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn clean install -DskipTests'
+            }
+        }
+
+      }
+    options {
+        timeout(time: 10, unit: 'MINUTES')
+    }
+}
