@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <title>Create an account</title>
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+        <form id="logoutForm" method="POST" action="/logout">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
+
+        <h2>Welcome <h2 sec:authentication="name"></h2> | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+
+		<ul class="nav nav-pills nav-stacked">
+		
+			<div sec:authorize="hasRole('ROLE_ADMIN')"><li><a href="thymeleaf/adminPage.html">Admin</a></li></div>
+			<div sec:authorize="hasRole('ROLE_USER')"><li><a href="thymeleaf/tutorials.html">Tutorials</a></li></div>
+			<div sec:authorize="hasRole('ROLE_USER')"><li><a href="/accountUpdate">Account Update</a></li></div>
+		
+					
+		</ul>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+</body>
+</html>

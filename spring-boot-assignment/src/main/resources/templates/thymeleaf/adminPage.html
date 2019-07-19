@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <title>Admin Page</title>
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+        <form id="logoutForm" method="POST" action="/logout">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
+
+        <h2>Admin Page | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+
+		<div>This is the admin page!!</div>
+		<br/>
+		<input type="button" onclick="history.go(-1);" value="Back" class="btn btn-dark"/>
+		
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+</body>
+</html>
