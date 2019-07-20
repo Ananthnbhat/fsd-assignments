@@ -6,7 +6,7 @@ Download or clone this project first.
 
 ### Install Jenkins
 
-Got tto [this](https://jenkins.io/doc/pipeline/tour/getting-started/) website and follow the instructions to install Jenkins.
+Go to [this](https://jenkins.io/doc/pipeline/tour/getting-started/) website and follow the instructions to install Jenkins.
 Do the first time setup of Jenkins.
 
 ### To setup CI using Jenkins, refer the screenshots given in this repository.
@@ -36,4 +36,8 @@ Now you should be able to see the application running on [http://localhost:8080]
 
 `docker-compose up --force-recreate --build`
 
+## Some alternatives
 
+- You can also run docker compose in detached mode and follow the instructions in [this](https://docs.docker.com/compose/production/) site to deploy the changes.
+- You use `docker-compose build` to build the containers in which will build the new image if there is any code change and then use the `docker-compose up` command to deploy the app.
+- This is the method I have followed. There are many other ways in which CI/CD can be implemented using Jenkins and Docker. Happy coding 🙂  
