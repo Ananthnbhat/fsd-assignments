@@ -1,13 +1,18 @@
 As the attached project was not downloadable, I have created my own project in which I have implemented CI/CD.
 
-Download or clone the project first.
+Download or clone this project first.
 
 ## Pre-requisites
 
+### Install Jenkins
+
+Go to [this](https://jenkins.io/doc/pipeline/tour/getting-started/) website and follow the instructions to install Jenkins.
+Do the first time setup of Jenkins.
 
 ### To setup CI using Jenkins, refer the screenshots given in this repository.
 
 After Jenkins is setup, it will automatically pull the code from the Github whenever there is a new commit and creates JAR file required to run the application.
+Note : Github webhook needs to be configured, so CI is triggered whenever there is a new commit. Follow the instructions given in [this](https://dzone.com/articles/adding-a-github-webhook-in-your-jenkins-pipeline) website to set it up
 
 ### To setup docker in the system, please refer the below website.
 
@@ -27,8 +32,12 @@ This single docker command will build the application and deploy it into the spe
 
 Now you should be able to see the application running on [http://localhost:8080](http://localhost:8080)
 
-### If you made any changes to code, you will need to restart the containers, to that end, use the below command.
+### If you make any changes to code, you will need to restart the containers, to that end, use the below command.
 
 `docker-compose up --force-recreate --build`
 
+## Some alternatives
 
+- You can also run docker compose in detached mode and follow the instructions in [this](https://docs.docker.com/compose/production/) site to deploy the changes.
+- You use `docker-compose build` to build the containers in which will build the new image if there is any code change and then use the `docker-compose up` command to deploy the app.
+- This is the method I have followed. There are many other ways in which CI/CD can be implemented using Jenkins and Docker. Happy coding 🙂  
