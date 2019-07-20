@@ -1,4 +1,4 @@
-# CI/CD using Jenkins and Docker for an SpringBoot app (maven)
+# CI/CD using Jenkins and Docker for a SpringBoot app (maven)
 
 As the attached project was not downloadable, I have created my own project in which I have implemented CI/CD.
 
