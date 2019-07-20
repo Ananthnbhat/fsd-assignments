@@ -43,4 +43,5 @@ Now you should be able to see the application running on [http://localhost:8080]
 
 - You can also run docker compose in detached mode and follow the instructions in [this](https://docs.docker.com/compose/production/) site to deploy the changes.
 - You use `docker-compose build` to build the containers in which will build the new image if there is any code change and then use the `docker-compose up` command to deploy the app.
-- This is the method I have followed. There are many other ways in which CI/CD can be implemented using Jenkins and Docker. Happy coding 🙂  
+
+This is the method I have followed. There are many other ways in which CI/CD can be implemented using Jenkins and Docker. Happy coding 🙂  
