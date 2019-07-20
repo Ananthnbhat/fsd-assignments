@@ -32,7 +32,7 @@ This single docker command will build the application and deploy it into the spe
 
 Now you should be able to see the application running on [http://localhost:8080](http://localhost:8080)
 
-### If you made any changes to code, you will need to restart the containers, to that end, use the below command.
+### If you make any changes to code, you will need to restart the containers, to that end, use the below command.
 
 `docker-compose up --force-recreate --build`
 
