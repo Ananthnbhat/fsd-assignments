@@ -4,6 +4,10 @@ Download or clone the project first.
 
 ## Pre-requisites
 
+### Install Jenkins
+
+Got tto [this](https://jenkins.io/doc/pipeline/tour/getting-started/) website and follow the instructions to install Jenkins.
+Do the first time setup of Jenkins.
 
 ### To setup CI using Jenkins, refer the screenshots given in this repository.
 
