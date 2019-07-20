@@ -1,6 +1,6 @@
 As the attached project was not downloadable, I have created my own project in which I have implemented CI/CD.
 
-Download or clone the project first.
+Download or clone this project first.
 
 ## Pre-requisites
 
@@ -12,6 +12,7 @@ Do the first time setup of Jenkins.
 ### To setup CI using Jenkins, refer the screenshots given in this repository.
 
 After Jenkins is setup, it will automatically pull the code from the Github whenever there is a new commit and creates JAR file required to run the application.
+Note : Github webhook needs to be configured, so CI is triggered whenever there is a new commit. Follow the instructions given in [this](https://dzone.com/articles/adding-a-github-webhook-in-your-jenkins-pipeline) website to set it up
 
 ### To setup docker in the system, please refer the below website.
 
