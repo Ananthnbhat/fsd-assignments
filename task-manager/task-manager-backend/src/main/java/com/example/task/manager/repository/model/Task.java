@@ -19,9 +19,11 @@ public class Task implements Serializable {
     private String task;
 
     @Column(name = "start_date")
+    @Type(type= "date")
     private Date startDate;
 
     @Column(name = "end_date")
+    @Type(type= "date")
     private Date endDate;
 
     @Column(name = "priority")
