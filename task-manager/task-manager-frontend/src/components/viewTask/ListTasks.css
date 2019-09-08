@@ -1,0 +1,29 @@
+.first-row, .list-tasks {
+    text-align: center;
+    padding: 12px;
+}
+
+.first-row {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+p {
+    word-wrap: break-word;
+}
+
+.glyphicon {
+    margin-left: 5px;
+}
+
+.task-col {
+    border-radius: 4px;
+    background-color: rgb(248, 248, 248);
+}
+
+.parentTask-col {
+    border-radius: 4px;
+}
+.end-task{
+    text-align: left;
+}

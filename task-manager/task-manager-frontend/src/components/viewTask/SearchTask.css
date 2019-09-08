@@ -1,0 +1,19 @@
+.search input[type="text"]{
+    width: 98%;
+    border-style: groove;
+    border-radius: 4px;
+}
+.search input[type="number"] {
+    width: 95%;
+    border-style: groove;
+    border-radius: 4px;
+}
+
+.search input[type="date"] {
+    width: 95%;
+    border-style: groove;
+    border-radius: 4px;
+}
+.label{
+    padding:2px 5px;
+}
