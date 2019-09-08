@@ -73,7 +73,6 @@ export default class AddTask extends React.Component {
                         <div className="col-sm-2">Task :</div>
                         <div className="col-sm-10">
                             <input type="text" value={this.state.taskValue} onChange={this.handleTaskValue.bind(this)} required />
-                            {this.state.taskValue}
                         </div>
                     </div>
                     <div className="row">
@@ -99,7 +98,6 @@ export default class AddTask extends React.Component {
                         <div className="col-sm-2">Start Date :</div>
                         <div className="col-sm-10">
                             <input type="date" value={this.state.startDateValue} onChange={this.handleStartDateValue.bind(this)} required />
-                            {this.state.startDateValue}
                         </div>
                     </div>
                     <div className="row">
@@ -113,7 +111,6 @@ export default class AddTask extends React.Component {
                         <div className="col-sm-10">
                             <button className="btn btn-primary button" value="Submit">Submit</button>
                             <button className="btn btn-secondary button" value="Reset" onClick={this.handleReset.bind(this)}>Reset</button>
-
                         </div>
                     </div>
                 </form>
