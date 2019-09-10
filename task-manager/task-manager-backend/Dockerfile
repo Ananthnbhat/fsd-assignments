@@ -1,4 +1,4 @@
 FROM openjdk:8
-ADD target/manager-mysql.jar manager-mysql.jar
+ADD target/task-manager-0.0.1.jar task-manager-0.0.1.jar
 EXPOSE 9091
-ENTRYPOINT ["java", "-jar", "manager-mysql.jar"]
+ENTRYPOINT ["java", "-jar", "task-manager-0.0.1.jar"]
