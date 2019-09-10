@@ -1,6 +1,12 @@
 Download or clone this project first.
 
-## Pre-requisites
+### Note: This project is integrated with CI/CD, which is optional. You may or may not use this feature.
+
+To simply run the application, make sure that mysql server is running with required tables and then run the following command in terminal/command prompt to create the jar and delpoy it on tomcat server.
+
+`mvn spring-boot:run`
+
+## CI/CD setup and running
 
 ### Install Jenkins
 
