@@ -1,0 +1,43 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hello-world-app
+    container_name: hello-container
+    depends_on:
+      - docker-mysql
+    ports:
+      - '8080:8080'
+    volumes:
+      - /data/hello-world-app
+#      - ~/.m2:/root/.m2
+
+    environment:
+      - DATABASE_HOST=docker-mysql
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=test
+      - DATABASE_PORT=3307
+  docker-mysql:
+      image: mysql:latest
+      container_name: mysql-container
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=test
+        - MYSQL_PASSWORD=root
+      ports:
+        - "3307:3307"
+
+  nginx:
+    container_name: nginx-container
+    image: nginx:1.13
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
