@@ -1,24 +1,17 @@
 pipeline {
     agent any
-
+    tools {
+        maven 'Maven 3.6.0'
+    }
     stages {
-        stage ('Compile Stage') {
-
+        stage('build') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    bat 'mvn clean compile'
-                }
+                sh 'mvn clean install -DskipTests'
             }
         }
 
-        stage ('Testing Stage') {
-
-            steps {
-                withMaven(maven : 'maven_3_5_4') {
-                    bat 'mvn test'
-                }
-            }
-        }
-
+      }
+    options {
+        timeout(time: 10, unit: 'MINUTES')
     }
 }
